@@ -6,4 +6,9 @@ from django.views import View
 class HomePageView(View):
   def get(self, request, *args, **kwargs):
     return render(request, 'main/index.html')
+  
+
+class DetailsPageView(View):
+  def get(self,request,*args,**kwargs):
+    return render(request,'porfolio-details.html')
     
