@@ -10,5 +10,5 @@ class HomePageView(View):
 
 class DetailsPageView(View):
   def get(self,request,*args,**kwargs):
-    return render(request,'porfolio-details.html')
+    return render(request,'linked-pages/porfolio-details.html')
     
