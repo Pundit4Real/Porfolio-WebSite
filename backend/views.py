@@ -9,6 +9,5 @@ class HomePageView(View):
   
 
 class ResumeView(View):
-  def get(self,request,*args,**kwargs):
-    return render(request,'linked-pages/resume.html')
-    
+    def get(self, request, *args, **kwargs):
+        return render(request, 'linked-pages/resume.html')
