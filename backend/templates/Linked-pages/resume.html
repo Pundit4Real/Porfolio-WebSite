@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Easy Profile Blue - templatemo</title>
+	<title>Easy Profile</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="">
@@ -12,9 +13,9 @@ Easy Profile Template
 http://www.templatemo.com/tm-467-easy-profile
 -->
 	<!-- stylesheet css -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/templatemo-blue.css">
+	<link rel="stylesheet" href="{% static 'resume/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'resume/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'resume/css/templatemo-blue.css' %}">
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
 
@@ -30,7 +31,7 @@ http://www.templatemo.com/tm-467-easy-profile
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				<img src="images/tm-easy-profile.jpg" class="img-responsive img-circle tm-border" alt="templatemo easy profile">
+				<img src="resume/images/tm-easy-profile.jpg" class="img-responsive img-circle tm-border" alt="templatemo easy profile">
 				<hr>
 				<h1 class="tm-title bold shadow">Hi, I am Julia</h1>
 				<h1 class="white bold shadow">Creative Director</h1>
@@ -143,7 +144,6 @@ http://www.templatemo.com/tm-467-easy-profile
 					<li><a href="#" class="fa fa-twitter"></a></li>
 					<li><a href="#" class="fa fa-dribbble"></a></li>
 					<li><a href="#" class="fa fa-github"></a></li>
-					<li><a href="#" class="fa fa-behance"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -151,10 +151,10 @@ http://www.templatemo.com/tm-467-easy-profile
 </footer>
 
 <!-- javascript js -->	
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>	
-<script src="js/jquery.backstretch.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="{% static 'resume/js/jquery.js' %}"></script>
+<script src="{% static 'resume/js/bootstrap.min.js' %}"></script>	
+<script src="{% static 'resume/js/jquery.backstretch.min.js' %}"></script>
+<script src="{% static 'resume/js/custom.js' %}"></script>
 
 </body>
 </html>
