@@ -8,7 +8,7 @@ class HomePageView(View):
     return render(request, 'main/index.html')
   
 
-class DetailsPageView(View):
+class ResumeView(View):
   def get(self,request,*args,**kwargs):
-    return render(request,'linked-pages/porfolio-details.html')
+    return render(request,'linked-pages/resume.html')
     

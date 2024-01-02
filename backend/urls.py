@@ -4,5 +4,6 @@ from .views import *
 
 urlpatterns = [
     path('',HomePageView.as_view(),name='index'),
-    path('details/',DetailsPageView.as_view(),name='portfolio-details-page'),
-]
+    path('linked-pages/resume/', ResumeView.as_view(), name='resume'),
+    
+    ]
