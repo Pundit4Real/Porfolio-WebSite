@@ -142,7 +142,7 @@ h2 {
 /* header section */
 header {
   text-align: center;
-  min-height: 300px;
+  min-height: 50px;
   overflow: hidden;
   position: relative;
   padding-top: 60px;
@@ -150,6 +150,9 @@ header {
 }
 header img {
   display: inline-block !important;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
 }
 header h2 {
   padding-top: 30px !important;
