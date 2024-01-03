@@ -148,9 +148,13 @@ html {
 }
 
 .menu .author-content span {
-    font-size: 13px;
+    font-size: 16px;
     font-style: italic;
-    color: #fff;
+    color: #f55050 !important;
+}
+
+.menu .author-content span a:hover{
+    color: #0dcaf0 !important;
 }
 
 .menu .social-network {
