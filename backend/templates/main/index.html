@@ -11,12 +11,13 @@
 
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center " data-section="hero1">
+  {% comment %} <section id="hero" class="d-flex flex-column justify-content-center align-items-center section" data-section="hero1">
     <div class="hero-container" data-aos="fade-in">
       <h1>Alex Smith</h1>
       <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
     </div>
-  </section><!-- End Hero -->
+  </section><!-- End Hero --> {% endcomment %}
+  <div class='clearfix'></div>
 
 <!-- The about page -->
 <section class="section about-me" data-section="section1">
@@ -80,8 +81,9 @@
   </div>
 </section>
 
+{% comment %} </section>
 <!-- skills sessions page -->
-{% comment %} <section class="section my-services" data-section="section2">
+<section class="section my-services" data-section="section2">
   <div class="container">
     <div class="section-heading">
       <h2>Resume</h2>
@@ -138,8 +140,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section> {% endcomment %}
+  </div> {% endcomment %}
 
 <!-- My project section -->
 <section class="section my-work" data-section="section3">
