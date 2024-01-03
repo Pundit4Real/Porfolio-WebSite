@@ -11,7 +11,7 @@ $(function(){
 		$('body').backstretch([
 	 		 "{% static 'resume/images/tm-bg-slide-1.jpg' %}", 
 	 		 "{% static 'resume/images/tm-bg-slide-2.jpg' %}",
-			 "{% static 'resume/images/tm-bg-slide-3.jpg' %}"
+			 "{% static 'resume/images/tm-bg-slide-3.jpg' %}",
 		], {duration: 3200, fade: 1300});
 	});
 })
