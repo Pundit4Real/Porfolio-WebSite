@@ -70,6 +70,11 @@ h2 {
   margin-top: 20px !important;
 }
 
+/* .languages{
+  width: 200px;
+  position: absolute;
+} */
+
 @font-face {
     font-family: 'Proxima';
     src: url(../fonts/ProximaNova-Regular.otf);
@@ -166,6 +171,14 @@ header hr {
 .about {
   background: #fff;
   box-shadow: 0px 1px 5px rgba(50,50,50,0.08);
+
+}
+
+.about p{
+line-height: 2.5 !important;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 500;
+margin-bottom: 120px;
 }
 
 /* skills section */
@@ -207,6 +220,10 @@ header hr {
   background: #fff;
  box-shadow: 0px 1px 5px rgba(50,50,50,0.08);
 }
+
+.languages h2, .contact h2{
+  color: #60A9F0;
+}
 .languages ul {
   padding: 10px;
 }
@@ -241,7 +258,7 @@ header hr {
 
 /* footer section */
 footer {
-  color: #d03535;
+  color: #fff;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 60px;
