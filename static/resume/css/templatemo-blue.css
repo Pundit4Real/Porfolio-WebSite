@@ -62,12 +62,17 @@ h2 {
 .education,.languages,
 .contact, .experience {
   padding: 10px !important;
-  min-height: 300px;
+  min-height: 400px;
 }
 
 .education, .languages,
 .contact, .experience {
   margin-top: 20px !important;
+}
+
+.experience-description,.education-description{
+  line-height: 1.2 !important;
+  font-size: 1.2rem;
 }
 
 /* .languages{
