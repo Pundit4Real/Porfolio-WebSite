@@ -247,6 +247,13 @@
         I'm always open to discussing new projects, sharing ideas, or simply having a conversation about technology and software engineering.
       </span>
     </div>
+{% comment %} the for loop for displaying the success message to the user {% endcomment %}
+    {% for message in messages  %}
+      <div class="alert alert-success">
+        {{message}}
+      </div>
+    {% endfor %}
+
     <div class="row">
       <div class="right-content">
         <div class="container">

@@ -28,4 +28,11 @@ def contact(request):
             
          send_mail(subject, full_message, email, ['your_email@example.com'])
 
+         messages.success(request, 'Your message has been sent Successfully!')
+         return redirect('index')
+      else:
+         form = ContactMeForm()
+      
+      return render(request, 'index.html',{'form':form})
+
 
