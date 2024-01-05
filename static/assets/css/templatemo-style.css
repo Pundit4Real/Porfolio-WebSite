@@ -748,7 +748,8 @@ section.contact-me {
     border-bottom: none;
 }
 
-#contact input {
+#contact input,
+#contact textarea {
     background-color: rgba(250,250,250,0.1);
     border: 1px solid rgba(250,250,250,1);
     border-radius: 0px;

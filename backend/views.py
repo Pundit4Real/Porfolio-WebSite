@@ -26,7 +26,7 @@ def contact(request):
             send_mail(subject, full_message, email, ['your_email@example.com'])
 
             messages.success(request, 'Your message has been sent Successfully!')
-            return redirect('index')  # Assuming 'index' is the name of your homepage URL pattern
+            return redirect('index')  
     else:
         form = ContactMeForm()
     
