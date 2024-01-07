@@ -258,33 +258,54 @@
       <div class="right-content">
         <div class="container">
           <form id="contact" action="" method="post">
-            {% csrf_token %} 
+            {% csrf_token %}
             <div class="row">
               <div class="col-md-6">
                 <fieldset>
-              
-                  placeholder="name..."
-                  {{ form.name.label_tag }}
-                  {{ form.name }}
-                  
+                  <input
+                    name="name"
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your name..."
+                    required= ""
+                  />
                 </fieldset>
               </div>
               <div class="col-md-6">
                 <fieldset>
-                  {{form.email}}
-                  {{form.email}}
+                  <input
+                    name="email"
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    placeholder="Your email..."
+                    required=""
+                  />
                 </fieldset>
               </div>
               <div class="col-md-12">
                 <fieldset>
-                  {{form.subject.label_tag}}
-                  {{form.subject}}
+                  <input
+                    name="subject"
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    placeholder="Subject..."
+                    required=""
+                  />
                 </fieldset>
               </div>
               <div class="col-md-12">
                 <fieldset>
-                  {{form.message.label_tag}}
-                  {{form.message}}
+                  <textarea
+                    name="message"
+                    rows="6"
+                    class="form-control"
+                    id="message"
+                    placeholder="Your message..."
+                    required=""
+                  ></textarea>
                 </fieldset>
               </div>
               <div class="col-md-12">
