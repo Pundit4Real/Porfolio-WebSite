@@ -30,10 +30,10 @@ class ContactView(View):
             try:
                 send_mail(subject, full_message, email, ['mameji1541@ziragold.com'])
                 messages.success(request, 'Your message has been sent successfully!')
-                return redirect('index')
+                return redirect('contact')
             except Exception as e:
                 messages.error(request, f"Failed to send message. Error: {e}")
         else:
             messages.error(request, 'Invalid form data. Please check the fields.')
 
-        return render(request, 'main/index.html', {'form': form})
+        return render(request, 'main/contact.html', {'form': form})
