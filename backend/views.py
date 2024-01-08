@@ -15,7 +15,7 @@ class ResumeView(View):
 class ContactView(View):
     def get(self, request, *args, **kwargs):
         form = ContactMeForm()
-        return render(request, 'main/index.html', {'form': form})
+        return render(request, 'main/contact.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = ContactMeForm(request.POST)
