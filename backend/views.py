@@ -12,8 +12,12 @@ class ResumeView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'linked-pages/resume.html')
 
-def contact(request):
-    if request.method == 'POST':
+class ContactView(View):
+    def get(self, request, *args, **kwargs):
+        form = ContactMeForm()
+        return render(request, 'main/index.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
         form = ContactMeForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -23,11 +27,13 @@ def contact(request):
 
             full_message = f"Message from: {name}\nEmail: {email}\n\n{message}"
             
-            send_mail(subject, full_message, email, ['your_email@example.com'])
+            try:
+                send_mail(subject, full_message, email, ['mameji1541@ziragold.com'])
+                messages.success(request, 'Your message has been sent successfully!')
+                return redirect('index')
+            except Exception as e:
+                messages.error(request, f"Failed to send message. Error: {e}")
+        else:
+            messages.error(request, 'Invalid form data. Please check the fields.')
 
-            messages.success(request, 'Your message has been sent Successfully!')
-            return redirect('index')  
-    else:
-        form = ContactMeForm()
-    
-    return render(request, 'main/index.html', {'form': form})
+        return render(request, 'main/index.html', {'form': form})
