@@ -28,7 +28,7 @@ class ContactView(View):
             full_message = f"Message from: {name}\nEmail: {email}\n\n{message}"
             
             try:
-                send_mail(subject, full_message, email, ['mameji1541@ziragold.com'])
+                send_mail(subject, full_message, email, ['mohammedaalli088@gmail.com'])
                 messages.success(request, 'Your message has been sent successfully!')
                 return redirect('contact')
             except Exception as e:
