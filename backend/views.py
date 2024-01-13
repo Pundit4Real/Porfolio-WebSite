@@ -26,13 +26,10 @@ class ContactView(View):
             message = form.cleaned_data['message']
 
             full_message = f"Message from: {name}\nEmail: {email}\n\n{message}"
-            
-            try:
-                send_mail(subject, full_message, email, ['mohammedaalli088@gmail.com'])
-                messages.success(request, 'Your message has been sent successfully!')
-                return redirect('contact')
-            except Exception as e:
-                messages.error(request, f"Failed to send message. Error: {e}")
+
+            send_mail(subject, full_message, email, ['mohammedaalli088@gmail.com'])
+            messages.success(request, 'Your message has been sent successfully!')
+            return redirect('contact')
         else:
             messages.error(request, 'Invalid form data. Please check the fields.')
 
