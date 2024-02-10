@@ -32,8 +32,8 @@ class ContactView(View):
                 messages.success(request, 'Your message has been sent successfully!')
                 return redirect('contact')
             except Exception as e:
-                messages.error(request, f"Failed to send message. Error: {e}")
+                messages.warning(request, f"Failed to send message. Error: {e}")
         else:
-            messages.error(request, 'Invalid form data. Please check the fields.')
+            messages.warning(request, 'Invalid form data. Please check the fields.')
 
         return render(request, 'main/contact.html', {'form': form})

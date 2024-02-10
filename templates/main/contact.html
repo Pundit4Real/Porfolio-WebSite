@@ -104,7 +104,6 @@
           {{message}}
         </div>
       {% endfor %}
-  
       <div class="row">
         <div class="right-content">
           <div class="container">
@@ -189,6 +188,10 @@
 
     <script> 
 
+      setTimeout (() => {
+        $(".alert").alert("close")
+      }, 2000)
+    
       //according to loftblog tut
       $(".main-menu li:first").addClass("active");
 
