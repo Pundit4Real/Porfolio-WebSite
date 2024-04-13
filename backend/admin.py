@@ -1,5 +1,5 @@
 from django.contrib import admin
-from backend.models import (Profile, AboutMe,Projects,Works,
+from backend.models.models import (Profile, AboutMe,Projects,Works,
                             ProjectPorfolio)
 # Register your models here.
 
