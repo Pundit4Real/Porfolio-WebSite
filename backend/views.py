@@ -24,16 +24,28 @@ class ContactView(View):
             email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
+            recipient_email = 'mohammedaalli088@gmail.com'
 
-            full_message = f"Message from: {name}\nEmail: {email}\n\n{message}"
-            
-            try:
-                send_mail(subject, full_message, email, ['mohammedaalli088@gmail.com'])
-                messages.success(request, 'Your message has been sent successfully!')
-                return redirect('contact')
-            except Exception as e:
-                messages.warning(request, f"Failed to send message. Error: {e}")
+            if email:
+                full_message = f"Message from: {name}\nEmail: {email}\n\n{message}"
+                try:
+                    send_mail(
+                        subject, 
+                        full_message,
+                        email, 
+                        [recipient_email], 
+                        fail_silently=False,
+                    )
+                    messages.success(request, 'Your message has been sent successfully!')
+                    return redirect('contact')  # Redirect to a thank you page or homepage
+                except Exception as e:
+                    messages.error(request, f"Failed to send message. Error: {e}")
+            else:
+                messages.warning(request, "Email address is required.")
         else:
-            messages.warning(request, 'Invalid form data. Please check the fields.')
+            # Display form errors in template
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f"Error in {field}: {error}")
 
         return render(request, 'main/contact.html', {'form': form})
