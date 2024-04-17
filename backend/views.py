@@ -3,6 +3,7 @@ from django.views import View
 from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import ContactMeForm
+from .models.models import Profile
 
 class HomePageView(View):
     def get(self, request, *args, **kwargs):
@@ -49,3 +50,18 @@ class ContactView(View):
                     messages.warning(request, f"Error in {field}: {error}")
 
         return render(request, 'main/contact.html', {'form': form})
+
+
+def profile_view(request):
+    # Retrieve the profile object if it exists
+    try:
+        profile = Profile.objects.get()
+    except Profile.DoesNotExist:
+        profile = None
+
+    context = {
+        'profile': profile,
+    }
+    print(context)
+
+    return render(request, 'base.html', context)

@@ -39,13 +39,28 @@
           <div id="menu" class="menu">
             <i class="fa fa-times" id="menu-close"></i>
             <div class="container">
-              <div class="image">
-                <a href="#"><img src="{% static 'assets/images/author-image.jpg' %}" alt="" /></a>
-              </div>
-              <div class="author-content">
-                <h4>Mohammed Ali</h4>
+               <div class="image">
+                    {% if profile %}
+                        <a href="#">
+                            {% if profile.image %}
+                                <img src="{{ profile.image.url }}" alt="{{ profile.full_name }}" />
+                            {% else %}
+                                <img src="{% static 'assets/images/default-profile-image.jpg' %}" alt="" />
+                            {% endif %}
+                        </a>
+                    {% else %}
+                        <a href="#">
+                            <img src="{% static 'assets/images/default-profile-image.jpg' %}" alt="" />
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="author-content">
+                    {% if profile %}
+                        <h4>{{ profile.full_name }}</h4>
+                    {% else %}
+                        <h4>Unknown</h4> <!-- Provide a default value if profile is not found -->
+                    {% endif %}
                 <span><a href="{% url 'resume' %}">Resume</a></span>
-
                 <!-- <span>Web Designer</span> -->
               </div>
               <div class="social-network">
