@@ -3,20 +3,16 @@ from django.views import View
 from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import ContactMeForm
-from .models.models import Profile
+from .models.hero import  Hero
 
 class HomePageView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'main/index.html')
-
-class ResumeView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'linked-pages/resume.html')
+        return render(request, 'index.html')
 
 class ContactView(View):
     def get(self, request, *args, **kwargs):
         form = ContactMeForm()
-        return render(request, 'main/contact.html', {'form': form})
+        return render(request, 'index.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = ContactMeForm(request.POST)
@@ -38,7 +34,7 @@ class ContactView(View):
                         fail_silently=False,
                     )
                     messages.success(request, 'Your message has been sent successfully!')
-                    return redirect('contact')  # Redirect to a thank you page or homepage
+                    return redirect('#contact')  # Redirect to a thank you page or homepage
                 except Exception as e:
                     messages.error(request, f"Failed to send message. Error: {e}")
             else:
@@ -49,19 +45,33 @@ class ContactView(View):
                 for error in errors:
                     messages.warning(request, f"Error in {field}: {error}")
 
-        return render(request, 'main/contact.html', {'form': form})
+        return render(request, 'index.html', {'form': form})
+
+class HeroView(View):
+
+    template_name = 'index.html'
+
+    def get(self, request, *args, **kwargs):
+        # Query all Hero objects from the database
+        heroes = Hero.objects.all()
+        
+        context = {
+            'heroes': heroes,
+        }
+
+        return render(request, self.template_name, context)
 
 
-def profile_view(request):
-    # Retrieve the profile object if it exists
-    try:
-        profile = Profile.objects.get()
-    except Profile.DoesNotExist:
-        profile = None
+# def profile_view(request):
+#     # Retrieve the profile object if it exists
+#     try:
+#         profile = Profile.objects.all()
+#     except Profile.DoesNotExist:
+#         profile = None
 
-    context = {
-        'profile': profile,
-    }
-    print(context)
+#     context = {
+#         'profile': profile,
+#     }
+#     print(context)
 
-    return render(request, 'base.html', context)
+#     return render(request, 'base.html', context)
