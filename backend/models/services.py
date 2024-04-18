@@ -26,6 +26,18 @@ class Services(models.Model):
 class ServicePopUp(models.Model):
     service_title = models.ForeignKey(Services, on_delete=models.CASCADE)
     modal_img = models.ImageField(upload_to='popUp modal',default='')
-    sub_title = models.CharField(max_length=100,default='')
-    title = models.CharField(max_length=100,default='')
     description = models.TextField(max_length=700,default='')
+    process_descr = models.TextField(max_length=400,default='')
+    Process_list = models.CharField(max_length=1000, blank=True)
+
+    def get_list(self):
+        return self.Process_list.split(',') if self.Process_list else []
+
+    def set_list(self, value):
+        self.Process_list = ','.join(value)
+
+    list_property = property(get_list, set_list)
+
+    class Meta:
+        verbose_name_plural = 'ServicePopUp'
+
