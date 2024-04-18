@@ -181,6 +181,7 @@
                             <div class="button-box d-flex flex-wrap align-items-center">
                                 <a href="{{hero.cv.url}}" download class="btn tj-btn-secondary">Download CV <i class="flaticon-download"></i></a>
                                 <a href="javascript:printCV('{{ hero.cv.url }}')" class="btn tj-btn-primary">Print CV <i class="flaticon-printer"></i></a>
+                                <!-- Scripts for printing the cv.pdf file -->
                                 <script>
                                     function printCV(cvUrl) {
                                         var cvWindow = window.open(cvUrl);
