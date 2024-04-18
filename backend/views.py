@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import ContactMeForm
 from .models.hero import  Hero
+from .models.services import ServiceHero,Services,ServicePopUp
 
 class HomePageView(View):
     def get(self, request, *args, **kwargs):
@@ -48,30 +49,42 @@ class ContactView(View):
         return render(request, 'index.html', {'form': form})
 
 class HeroView(View):
-
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
-        # Query all Hero objects from the database
-        heroes = Hero.objects.all()
-        
+        try:
+            # Query all Hero objects from the database
+            heroes = Hero.objects.all()
+        except Exception as e:
+            # Handle any exceptions
+            print(f"Error fetching heroes: {e}")
+            heroes = []
+
+        try:
+            # Fetch service heroes from the database
+            service_heroes = ServiceHero.objects.all()
+        except Exception as e:
+            # Handle any exceptions
+            print(f"Error fetching service heroes: {e}")
+            service_heroes = []
+
+        try:
+            services = Services.objects.all()
+        except Exception as e:
+            print(f"Error fetching services: {e}")
+            services = []
+
+        try:
+            servicepopup = ServicePopUp.objects.all()
+        except Exception as e:
+            print(f"Error fetching services: {e}")
+            servicepopup = []
+
         context = {
             'heroes': heroes,
+            'service_heroes': service_heroes,
+            'services':services,
+            'servicepopup':servicepopup
         }
 
         return render(request, self.template_name, context)
-
-
-# def profile_view(request):
-#     # Retrieve the profile object if it exists
-#     try:
-#         profile = Profile.objects.all()
-#     except Profile.DoesNotExist:
-#         profile = None
-
-#     context = {
-#         'profile': profile,
-#     }
-#     print(context)
-
-#     return render(request, 'base.html', context)
