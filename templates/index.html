@@ -1044,14 +1044,15 @@
                     <div class="col-lg-6 col-md-7 order-2 order-md-1">
                         <div class="contact-form-box wow fadeInLeft" data-wow-delay=".3s">
                             <div class="section-header">
-                                <h2 class="section-title">Let’s work together!</h2>
-                                <p>I design and code beautifully simple things and i love what i do. Just simple like
-                                    that!
-                                </p>
+                                {% for c in contacts %}
+                                <h2 class="section-title">{{c.title}}</h2>
+                                <p>{{c.desc}}</p>
+                                {% endfor %}
                             </div>
 
                             <div class="tj-contact-form">
                                 <form id="contact-form">
+                                    {% csrf_token %}
                                     <div class="row gx-3">
                                         <div class="col-sm-6">
                                             <div class="form_group">

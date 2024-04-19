@@ -1,6 +1,7 @@
 from django.contrib import admin
 from backend.models.hero import Hero
 from backend.models.services import ServiceHero,Services,ServicePopUp
+from backend.models.contact import ContactUs,ContactUsHero
 # Register your models here.
 
 class HeroAdmin(admin.ModelAdmin):
@@ -15,12 +16,20 @@ class ServicesAdmin(admin.ModelAdmin):
 class ServicePopUpAdmin(admin.ModelAdmin):
     list_display = ['service_title', 'modal_img',]
 
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name','email','phone','service','message']
+
+class ContactUsHeroAdmin(admin.ModelAdmin):
+    list_display = ['title','id']
+
 
 
 admin.site.register(Hero,HeroAdmin)
 admin.site.register(ServiceHero,ServiceHeroAdmin)
 admin.site.register(Services,ServicesAdmin)
 admin.site.register(ServicePopUp,ServicePopUpAdmin)
+admin.site.register(ContactUs,ContactUsAdmin)
+admin.site.register(ContactUsHero,ContactUsHeroAdmin)
 
 
 

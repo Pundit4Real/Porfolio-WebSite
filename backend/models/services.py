@@ -5,7 +5,7 @@ class ServiceHero(models.Model):
     title = models.CharField(max_length=100,default='')
     description = models.TextField(max_length=300,default='')
     class Meta:
-        verbose_name_plural = 'ServiceHero'
+        verbose_name_plural = 'Service Hero'
 
     def __str__(self):
         return self.title
@@ -39,5 +39,6 @@ class ServicePopUp(models.Model):
     list_property = property(get_list, set_list)
 
     class Meta:
-        verbose_name_plural = 'ServicePopUp'
+        verbose_name_plural = 'Service Pop-Up'
+        
 
