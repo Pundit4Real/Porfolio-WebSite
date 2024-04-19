@@ -2,6 +2,9 @@ from django.db import models
 
 class ContactUsHero(models.Model):
     title = models.CharField(max_length=200,default='')
+    phone = models.CharField(max_length=50,default='')
+    email = models.EmailField(default='')
+    address = models.TextField(max_length=200,default='')
     desc = models.CharField(max_length=300,default='')
 
     class Meta:

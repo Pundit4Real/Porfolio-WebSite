@@ -118,7 +118,7 @@ class HeroView(View):
                         fail_silently=False,
                     )
                     messages.success(request, 'Your message has been sent successfully!')
-                    return HttpResponseRedirect(request.path_info)  # Redirect to same page to clear form
+                    return HttpResponseRedirect(request.path_info) 
                 except Exception as e:
                     messages.error(request, f"Failed to send message. Error: {e}")
             else:

@@ -33,28 +33,6 @@
 </head>
 
 <body>
-
-    <!-- Preloader Area Start -->
-    <!-- <div class="preloader">
-        <svg viewbox="0 0 1000 1000" preserveaspectratio="none">
-            <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
-        </svg>
-
-        <div class="preloader-heading">
-            <div class="load-text">
-                <span>L</span>
-                <span>o</span>
-                <span>a</span>
-                <span>d</span>
-                <span>i</span>
-                <span>n</span>
-                <span>g</span>
-            </div>
-        </div>
-    </div> -->
-    <!-- Preloader Area End -->
-
-
     <!-- start: Back To Top -->
     <div class="progress-wrap" id="scrollUp">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
@@ -71,7 +49,7 @@
 
                     <div class="logo-box">
                         {% for hero in heroes %}
-                        <a href="index.html">
+                        <a href="{% url 'index' %}">
                             <img src="{{hero.logo.url}}" alt="">
                         </a>
                         {% endfor %}
@@ -79,7 +57,7 @@
 
                     <div class="header-info-list d-none d-md-inline-block">
                         <ul class="ul-reset">
-                            <li><a href="mailto:mohammedaalli088@gmail.com">mohammedaalli088@gmail.com</a></li>
+                            <li><a href="mailto:mohammedaalli088@gmail.com">Email Me Now !</a></li>
                         </ul>
                     </div>
 
@@ -119,7 +97,7 @@
 
                     <div class="logo-box">
                         {% for hero in heroes %}
-                        <a href="index.html">
+                        <a href="{% url 'index' %}">
                             <img src="{{hero.logo.url}}" alt="">
                         </a>
                         {% endfor %}
@@ -127,7 +105,7 @@
 
                     <div class="header-info-list d-none d-md-inline-block">
                         <ul class="ul-reset">
-                            <li><a href="mailto:mohammedaalli088@gmail.com">mohammedaalli088@gmail.com</a></li>
+                            <li><a href="mailto:mohammedaalli088@gmail.com">Email Me Now !</a></li>
                         </ul>
                     </div>
 
@@ -167,6 +145,13 @@
         {% for hero in heroes %}
           
         <section class="hero-section d-flex align-items-center" id="intro">
+            <div class="intro_text">
+                <svg viewbox="0 0 1320 300">
+                    <text x="50%" y="50%" text-anchor="middle">
+                        HI
+                    </text>
+                </svg>
+            </div>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -224,12 +209,6 @@
                                 <div class="text">Happy <br>Clients</div>
                             </div>
                         </div>
-                        <!-- <div class="col-6 col-lg-3">
-                            <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
-                                <div class="number"><span class="odometer" data-count="14">0</span></div>
-                                <div class="text">Years of <br>Experience</div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -237,105 +216,109 @@
         {% endfor %}
         <!-- HERO SECTION END -->
 
-<!-- SERVICES SECTION START -->
-<section class="services-section" id="services-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                {% for sh in service_heroes %}
-                <div class="section-header text-center">
-                    <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{ sh.title }}</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".4s">{{ sh.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="services-widget position-relative">
-                    {% for s in services %}
-                    <div class="service-item current d-flex flex-wrap align-items-center wow fadeInUp" data-wow-delay=".5s">
-                        <div class="left-box d-flex flex-wrap align-items-center">
-                            <span class="number">{{ s.service_no }}</span>
-                            <h3 class="service-title">{{ s.service_title }}</h3>
+        <!-- SERVICES SECTION START -->
+        <section class="services-section" id="services-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for sh in service_heroes %}
+                        <div class="section-header text-center">
+                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{ sh.title }}</h2>
+                            <p class="wow fadeInUp" data-wow-delay=".4s">{{ sh.description }}</p>
                         </div>
-                        <div class="right-box">
-                            <p>{{ s.service_desc }}</p>
-                        </div>
-                        <i class="flaticon-up-right-arrow"></i>
-                        <button data-mfp-src="#service-wrapper-{{ forloop.counter }}" class="service-link modal-popup"></button>
-                    </div>
-                    {% endfor %}
-                    <div class="active-bg wow fadeInUp" data-wow-delay=".5s"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- SERVICES SECTION END -->
-
-<!-- start: Service Popup -->
-{% for s, pop in servicepopups %}
-<div id="service-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
-    <div class="popup_modal_img">
-        <img src="{{ pop.modal_img.url }}" alt="">
-    </div>
-
-    <div class="popup_modal_content">
-        <div class="service_details">
-            <div class="row">
-                <div class="col-lg-7 col-xl-8">
-                    <div class="service_details_content">
-                        <div class="service_info">
-                            <h6 class="subtitle">SERVICES</h6>
-                            <h2 class="title">{{ pop.service_title }}</h2>
-                            <div class="desc">
-                                <p>{{ pop.description }}</p>
-                            </div>
-
-                            <h3 class="title">Services Process</h3>
-                            <div class="desc">
-                                <p>{{ pop.process_descr }}</p>
-                            </div>
-                            <ul>
-                                {% for item in pop.list_property %}
-                                <li>{{ item }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="col-lg-5 col-xl-4">
-                    <div class="tj_main_sidebar">
-                        <div class="sidebar_widget contact_form">
-                            <div class="widget_title">
-                                <h3 class="title">Get in Touch</h3>
-                            </div>
 
-                            <form action="index.html">
-                                <div class="form_group">
-                                    <input type="text" name="name" id="name" placeholder="Name" autocomplete="off">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="services-widget position-relative">
+                            {% for s in services %}
+                            <div class="service-item current d-flex flex-wrap align-items-center wow fadeInUp" data-wow-delay=".5s">
+                                <div class="left-box d-flex flex-wrap align-items-center">
+                                    <span class="number">{{ s.service_no }}</span>
+                                    <h3 class="service-title">{{ s.service_title }}</h3>
                                 </div>
-                                <div class="form_group">
-                                    <input type="email" name="semail" id="semail" placeholder="Email" autocomplete="off">
+                                <div class="right-box">
+                                    <p>{{ s.service_desc }}</p>
                                 </div>
-                                <div class="form_group">
-                                    <textarea name="smessage" id="smessage" placeholder="Your message" autocomplete="off"></textarea>
-                                </div>
-                                <div class="form_btn">
-                                    <button class="btn tj-btn-primary" type="submit">Send Message</button>
-                                </div>
-                            </form>
+                                <i class="flaticon-up-right-arrow"></i>
+                                <button data-mfp-src="#service-wrapper-{{ forloop.counter }}" class="service-link modal-popup"></button>
+                            </div>
+                            {% endfor %}
+                            <div class="active-bg wow fadeInUp" data-wow-delay=".5s"></div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- SERVICES SECTION END -->
+
+        <!-- start: Service Popup -->
+        {% for s, pop in servicepopups %}
+        <div id="service-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
+            <div class="popup_modal_img">
+                <img src="{{ pop.modal_img.url }}" alt="">
+            </div>
+
+            <div class="popup_modal_content">
+                <div class="service_details">
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-8">
+                            <div class="service_details_content">
+                                <div class="service_info">
+                                    <h6 class="subtitle">SERVICES</h6>
+                                    <h2 class="title">{{ pop.service_title }}</h2>
+                                    <div class="desc">
+                                        <p>{{ pop.description }}</p>
+                                    </div>
+
+                                    <h3 class="title">Services Process</h3>
+                                    <div class="desc">
+                                        <p>{{ pop.process_descr }}</p>
+                                    </div>
+                                    <ul>
+                                        {% for item in pop.list_property %}
+                                        <li>{{ item }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-4">
+                            <div class="tj_main_sidebar">
+                                <div class="sidebar_widget contact_form">
+                                    <div class="widget_title">
+                                        <h3 class="title">Get in Touch</h3>
+                                    </div>
+
+                                    <form method="post" action="{% url 'index' %}">
+                                        {% csrf_token %}
+                                        <div class="form_group">
+                                            {{form.first_name}}
+                                        </div>
+                                        <div class="form_group">
+                                            {{form.last_name}}
+                                        </div>
+                                        <div class="form_group">
+                                            {{form.email}}
+                                        </div>
+                                        <div class="form_group">
+                                            {{form.message}}
+                                        </div>
+                                        <div class="form_btn">
+                                            <button class="btn tj-btn-primary" type="submit">Send Message</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-{% endfor %}
-<!-- end: Service Popup -->
+        {% endfor %}
+        <!-- end: Service Popup -->
 
 
 
@@ -1049,45 +1032,38 @@
                                 <p>{{c.desc}}</p>
                                 {% endfor %}
                             </div>
-
                             <div class="tj-contact-form">
-                                <form id="contact-form">
+                                <form id="contact-form" method="post" action="{% url 'index' %}">
                                     {% csrf_token %}
                                     <div class="row gx-3">
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                <input type="text" name="conName" id="conName" placeholder="First name" autocomplete="off">
+                                                {{form.first_name}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                <input type="text" name="conLName" id="conLName" placeholder="Last name" autocomplete="off">
+                                               {{form.last_name}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                <input type="email" name="conEmail" id="conEmail" placeholder="Email address" autocomplete="off">
+                                                {{form.email}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                <input type="tel" name="conPhone" id="conPhone" placeholder="Phone number" autocomplete="off">
+                                               {{form.phone}}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form_group">
-                                                <select name="conService" id="conService" class="tj-nice-select">
-                                                    <option value="" selected="" disabled="">Choose Service</option>
-                                                    <option value="braning">Branding Design</option>
-                                                    <option value="web">Web Design</option>
-                                                    <option value="uxui">UI/UX Design</option>
-                                                    <option value="app">App Design</option>
-                                                </select>
+                                              {{form.service}}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form_group">
-                                                <textarea name="conMessage" id="conMessage" placeholder="Message"></textarea>
+                                                {{form.message}}
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -1103,6 +1079,7 @@
 
                     <div class="col-lg-5 offset-lg-1 col-md-5  d-flex flex-wrap align-items-center  order-1 order-md-2">
                         <div class="contact-info-list">
+                            {% for c in contacts %}
                             <ul class="ul-reset">
                                 <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".4s">
                                     <div class="icon-box">
@@ -1110,7 +1087,7 @@
                                     </div>
                                     <div class="text-box">
                                         <p>Phone</p>
-                                        <a href="tel:0123456789">+01 123 654 8096</a>
+                                        <a href="tel:0123456789">{{c.phone}}</a>
                                     </div>
                                 </li>
                                 <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".5s">
@@ -1119,7 +1096,7 @@
                                     </div>
                                     <div class="text-box">
                                         <p>Email</p>
-                                        <a href="mailto:mail@mail.com">gerolddesign@mail.com</a>
+                                        <a href="mailto:mohammedaalli088@gmail.com">{{c.email}}</a>
                                     </div>
                                 </li>
                                 <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".6s">
@@ -1128,10 +1105,11 @@
                                     </div>
                                     <div class="text-box">
                                         <p>Address</p>
-                                        <a href="#">Warne Park Street Pine, <br>FL 33157, New York</a>
+                                        <a href="#">{{c.address}}</a>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul>                            
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -1183,9 +1161,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
+                    {% for hero in heroes %}
                     <div class="footer-logo-box">
-                        <a href="#"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
-                    </div>
+                        <a href="#"><img src="{{hero.logo.url}}" alt=""></a>
+                    </div>                     
+                    {% endfor %}
                     <div class="footer-menu">
                         <nav>
                             <ul>
@@ -1199,7 +1179,7 @@
                         </nav>
                     </div>
                     <div class="copy-text">
-                        <p>&copy; 2024 All rights reserved by <a href="#" target="_blank">ThemeJunction</a></p>
+                        <p>&copy; 2024 All rights reserved by <a href="#" target="_blank">Pundit4Real</a></p>
                     </div>
                 </div>
             </div>

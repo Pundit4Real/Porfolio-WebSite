@@ -20,7 +20,7 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name','email','phone','service','message']
 
 class ContactUsHeroAdmin(admin.ModelAdmin):
-    list_display = ['title','id']
+    list_display = ['title','phone','email','address']
 
 
 
