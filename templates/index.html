@@ -237,166 +237,107 @@
         {% endfor %}
         <!-- HERO SECTION END -->
 
-        <!-- SERVICES SECTION START -->
-        <section class="services-section" id="services-section">
-            <div class="container">
-                {% for sh in service_heroes  %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-header text-center">
-                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{sh.title}}</h2>
-                            <p class=" wow fadeInUp" data-wow-delay=".4s">{{sh.description}}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-
-                {% for s in services %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="services-widget position-relative">
-                            
-                            <div class="service-item current d-flex flex-wrap align-items-center wow fadeInUp" data-wow-delay=".5s">
-                                <div class="left-box d-flex flex-wrap align-items-center">
-                                    <span class="number">{{s.service_no}}</span>
-                                    <h3 class="service-title">{{s.service_title}}</h3>
-                                </div>
-                                <div class="right-box">
-                                    <p>{{s.service_desc}}</p>
-                                </div>
-                                <i class="flaticon-up-right-arrow"></i>
-                                <button data-mfp-src="#service-wrapper" class="service-link modal-popup"></button>
-                            </div>
-                            <div class="active-bg wow fadeInUp" data-wow-delay=".5s"></div>
-                        </div>
-                    </div>
+<!-- SERVICES SECTION START -->
+<section class="services-section" id="services-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% for sh in service_heroes %}
+                <div class="section-header text-center">
+                    <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{ sh.title }}</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">{{ sh.description }}</p>
                 </div>
                 {% endfor %}
             </div>
-        </section>
-        <!-- SERVICES SECTION END -->
+        </div>
 
-        <!-- start: Service Popup -->
-        {% for pop in servicepopup %}
-
-        <div id="service-wrapper" class="popup_content_area zoom-anim-dialog mfp-hide">
-            <div class="popup_modal_img">
-                <img src="{% static 'assets/img/services/modal-img.jpg' %}" alt="">
-            </div>
-
-            <div class="popup_modal_content">
-                <div class="service_details">
-                    <div class="row">
-                        <div class="col-lg-7 col-xl-8">
-                            <div class="service_details_content">
-                                <div class="service_info">
-                                    <h6 class="subtitle">SERVICES</h6>
-                                    <h2 class="title">UI/UX Design</h2>
-                                    <div class="desc">
-                                        <p>Elizabeth some dodgy chavs are you taking the piss faff about pardon amongst
-                                            car
-                                            boot a load of old tosh is cracking goal blow off telling brown.</p>
-
-                                        <p>Brolly show off show off pick your nose and blow off well A bit of how’s your
-                                            father tomfoolery blimey, me old mucker starkers Queen’s English dropped a
-                                            clanger bite your arm spiffing good time burke Why chancer. Hotpot bum bag
-                                            cracking goal young delinquent naff bugger cup of chars bender loo it’s all
-                                            gone
-                                            to pot the nancy cheeky.</p>
-
-                                        <p>At public school cras bog some dodgy chav Richard Why argy bargy vagabon
-                                            William
-                                            bender matie boy, off his nut chancer Jeffrey up the kyver say mufty you mug
-                                            ummm telling pear shaped Oxford owt to do with me do one so said are you
-                                            taking
-                                            his.</p>
-                                    </div>
-
-                                    <h3 class="title">Services Process</h3>
-                                    <div class="desc">
-                                        <p>Elizabeth some dodgy chavs are you taking the piss faff about pardon amongst
-                                            car
-                                            boot a load of old tosh is cracking goal blow off telling brown.</p>
-                                    </div>
-                                    <ul>
-                                        <li>Reinvent Your Business to Better</li>
-                                        <li>Pioneering the Internet's First</li>
-                                        <li>Pioneering the Design World's First</li>
-                                        <li>Pioneering the Design World's First</li>
-                                        <li>Pioneering the Design World's First</li>
-                                        <li>Pioneering the Design World's First</li>
-                                    </ul>
-                                </div>
-                            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="services-widget position-relative">
+                    {% for s in services %}
+                    <div class="service-item current d-flex flex-wrap align-items-center wow fadeInUp" data-wow-delay=".5s">
+                        <div class="left-box d-flex flex-wrap align-items-center">
+                            <span class="number">{{ s.service_no }}</span>
+                            <h3 class="service-title">{{ s.service_title }}</h3>
                         </div>
-                        <!-- <div class="col-lg-5 col-xl-4">
-                            <div class="tj_main_sidebar">
-                                <div class="sidebar_widget services_list">
-                                    <div class="widget_title">
-                                        <h3 class="title">All Services</h3>
-                                    </div>
-                                    <ul>
-                                        <li class="active">
-                                            <button>
-                                                <i class="flaticon-design"></i>
-                                                Branding Design
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button>
-                                                <i class="flaticon-3d-movie"></i>
-                                                3D Animation
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button>
-                                                <i class="flaticon-ux-design"></i>
-                                                UI/UX Design
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button>
-                                                <i class="flaticon-web-design"></i>
-                                                Web Design
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button>
-                                                <i class="flaticon-ui-design"></i>
-                                                App Design
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div> -->
+                        <div class="right-box">
+                            <p>{{ s.service_desc }}</p>
+                        </div>
+                        <i class="flaticon-up-right-arrow"></i>
+                        <button data-mfp-src="#service-wrapper-{{ forloop.counter }}" class="service-link modal-popup"></button>
+                    </div>
+                    {% endfor %}
+                    <div class="active-bg wow fadeInUp" data-wow-delay=".5s"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SERVICES SECTION END -->
 
-                                <div class="sidebar_widget contact_form">
-                                    <div class="widget_title">
-                                        <h3 class="title">Get in Touch</h3>
-                                    </div>
+<!-- start: Service Popup -->
+{% for s, pop in servicepopups %}
+<div id="service-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
+    <div class="popup_modal_img">
+        <img src="{{ pop.modal_img.url }}" alt="">
+    </div>
 
-                                    <form action="index.html">
-                                        <div class="form_group">
-                                            <input type="text" name="name" id="name" placeholder="Name" autocomplete="off">
-                                        </div>
-                                        <div class="form_group">
-                                            <input type="email" name="semail" id="semail" placeholder="Email" autocomplete="off">
-                                        </div>
-                                        <div class="form_group">
-                                            <textarea name="smessage" id="smessage" placeholder="Your message" autocomplete="off"></textarea>
-                                        </div>
-                                        <div class="form_btn">
-                                            <button class="btn tj-btn-primary" type="submit">Send Message</button>
-                                        </div>
-                                    </form>
-                                </div>
+    <div class="popup_modal_content">
+        <div class="service_details">
+            <div class="row">
+                <div class="col-lg-7 col-xl-8">
+                    <div class="service_details_content">
+                        <div class="service_info">
+                            <h6 class="subtitle">SERVICES</h6>
+                            <h2 class="title">{{ pop.service_title }}</h2>
+                            <div class="desc">
+                                <p>{{ pop.description }}</p>
                             </div>
+
+                            <h3 class="title">Services Process</h3>
+                            <div class="desc">
+                                <p>{{ pop.process_descr }}</p>
+                            </div>
+                            <ul>
+                                {% for item in pop.list_property %}
+                                <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-4">
+                    <div class="tj_main_sidebar">
+                        <div class="sidebar_widget contact_form">
+                            <div class="widget_title">
+                                <h3 class="title">Get in Touch</h3>
+                            </div>
+
+                            <form action="index.html">
+                                <div class="form_group">
+                                    <input type="text" name="name" id="name" placeholder="Name" autocomplete="off">
+                                </div>
+                                <div class="form_group">
+                                    <input type="email" name="semail" id="semail" placeholder="Email" autocomplete="off">
+                                </div>
+                                <div class="form_group">
+                                    <textarea name="smessage" id="smessage" placeholder="Your message" autocomplete="off"></textarea>
+                                </div>
+                                <div class="form_btn">
+                                    <button class="btn tj-btn-primary" type="submit">Send Message</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-         {% endfor %}
-        <!-- end: Service Popup -->
+    </div>
+</div>
+{% endfor %}
+<!-- end: Service Popup -->
+
+
 
         <!-- PORTFOLIO SECTION START -->
         <section class="portfolio-section" id="works-section">

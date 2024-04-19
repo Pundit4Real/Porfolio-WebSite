@@ -53,18 +53,14 @@ class HeroView(View):
 
     def get(self, request, *args, **kwargs):
         try:
-            # Query all Hero objects from the database
             heroes = Hero.objects.all()
         except Exception as e:
-            # Handle any exceptions
             print(f"Error fetching heroes: {e}")
             heroes = []
 
         try:
-            # Fetch service heroes from the database
             service_heroes = ServiceHero.objects.all()
         except Exception as e:
-            # Handle any exceptions
             print(f"Error fetching service heroes: {e}")
             service_heroes = []
 
@@ -75,16 +71,16 @@ class HeroView(View):
             services = []
 
         try:
-            servicepopup = ServicePopUp.objects.all()
+            servicepopups = [(service, ServicePopUp.objects.filter(service_title=service).first()) for service in services]
         except Exception as e:
-            print(f"Error fetching services: {e}")
-            servicepopup = []
+            print(f"Error fetching service popups: {e}")
+            servicepopups = []
 
         context = {
             'heroes': heroes,
             'service_heroes': service_heroes,
-            'services':services,
-            'servicepopup':servicepopup
+            'services': services,
+            'servicepopups': servicepopups
         }
 
         return render(request, self.template_name, context)
