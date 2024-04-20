@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models.hero import  Hero
 from .models.services import ServiceHero,Services,ServicePopUp
 from .models.contact import ContactUs,ContactUsHero
+from .models.resume import ResumeHero,Education,Experience
 from .forms import ContactUsForm,ServicePopUpForm
 from .utils import EmailSender
 
@@ -49,6 +50,18 @@ class HeroView(View):
         except Exception as e:
             print(f"Error fetching service popups: {e}")
             servicepopups = []
+        
+        if ResumeHero:
+            resumeHero = ResumeHero.objects.all()
+        print(f'Error fetching data from the databse')
+
+        if Experience:
+            experience = Experience.objects.all()
+        print(f'Error fetching data from the databse')
+
+        if Education:
+            education = Education.objects.all().order_by('-id')
+        print(f'Error fetching data from the databse')
 
         context = {
             'heroes': heroes,
@@ -57,7 +70,10 @@ class HeroView(View):
             'servicepopups': servicepopups,
             'contact_form': contact_form,
             'serviceModal_form': serviceModal_form,
-            'contacts': contacts
+            'contacts': contacts,
+            'resumeHero':resumeHero,
+            'experience':experience,   
+            'education':education,   
         }
 
         return render(request, self.template_name, context)
