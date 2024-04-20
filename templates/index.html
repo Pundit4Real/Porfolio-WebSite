@@ -1121,7 +1121,8 @@
             </div>
         </section>
         <!-- CONTACT SECTION END -->
-
+       
+       
         <!-- BEGIN: Contact Form Success Modal Message -->
         <div class="modal contact_modal" id="message_sent" tabindex="-1">
             <div class="modal-dialog">
@@ -1140,7 +1141,8 @@
             </div>
         </div>
         <!-- END: Contact Form Success Modal Message -->
-
+       
+        
         <!-- BEGIN: Contact Form Fail Modal Message -->
         <div class="modal contact_modal failed" id="message_fail" tabindex="-1">
             <div class="modal-dialog">
@@ -1157,50 +1159,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- END: Contact Form Fail Modal Message End -->
-
-        <!-- BEGIN: Scripts for  showing  Modal Message -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                document.getElementById('contact-form').addEventListener('submit', function (event) {
-                    event.preventDefault(); // Prevent the form from submitting normally
-                    var form = event.target;
-                    var formData = new FormData(form);
-            
-                    // Submit the form using AJAX
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'X-CSRFToken': '{{ csrf_token }}' // Ensure CSRF token is included
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // If form submission is successful, show the success modal
-                            return response.json();
-                        } else {
-                            console.error('Form submission failed:', response.statusText);
-                            throw new Error('Form submission failed');
-                        }
-                    })
-                    .then(data => {
-                        if (data.success) {
-                            $('#message_sent').modal('show');
-                            form.reset();
-                        } else {
-                            $('#message_fail').modal('show'); // Show the error modal
-                            console.error('Form submission error:', data.error_message);
-                        }
-                    })
-
-                });
-            });
-        </script>
-            
-            
-            
+        </div> 
+        <!-- END: Contact Form Fail Modal Message End -->  
     </main>
 
     <!-- FOOTER AREA START -->
@@ -1253,6 +1213,43 @@
     <script src="{% static 'assets/js/validate.min.js' %}"></script>
 
     <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- scripts for displaying the success modal or the failure modal -->
+    
+    <script>
+        $(document).ready(function() {
+            $('#contact-form').submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                
+                // Serialize form data
+                var formData = $(this).serialize();
+                
+                // Send AJAX request to the form submission URL
+                console.log("ajax printed and triggered")
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            // Display the success modal
+                            $('#message_sent').modal('show');
+                        } else {
+                            // Display the failure modal
+                            $('#message_fail').modal('show');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        $('#message_fail').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
 </body>
 
 </html>

@@ -67,9 +67,9 @@ class ContactUsForm(forms.ModelForm):
                 'class': 'form_group',
                 'placeholder':'Select a service'
             }
-        )
+        ),
+        required=True
     )
-
     class Meta:
         model = ContactUs
         fields = ['first_name', 'last_name', 'email', 'phone','service','message',]

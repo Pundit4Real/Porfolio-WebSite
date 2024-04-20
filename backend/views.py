@@ -67,30 +67,30 @@ class HeroView(View):
         serviceModal_form = ServicePopUpForm(request.POST)
         
         if contact_form.is_valid():
-            # Process contact form submission
             client = contact_form.save()
             email = 'mohammedaalli088@gmail.com'
 
-            if EmailSender().send_client_email(client, email):
-                # Email sent successfully, return success response
-                return JsonResponse({'success': True})
+            if not EmailSender().send_client_email(client, email):
+                messages.warning(request, 'Emailing Failed!')
+                return JsonResponse({'success': False})
             else:
-                # Email sending failed, return error response
-                return JsonResponse({'success': False, 'error_message': 'Email Alert Failed'}, status=500)
-        
+                return JsonResponse({'success': True})
+            
         elif serviceModal_form.is_valid():
-            # Process service form submission
             client = serviceModal_form.save()
             email = 'mohammedaalli088@gmail.com'
-
-            if EmailSender().send_client_email(client, email):
-                return JsonResponse({'success': True})
+            
+            if not EmailSender().send_client_email(client, email):
+                messages.error(request, 'Emailing Failed!')
+                return JsonResponse({'success': False})
             else:
-                # Email sending failed, return error response
-                return JsonResponse({'success': False, 'error_message': 'Email Alert Failed'}, status=500)
-        
+                return JsonResponse({'success': True})
+
         else:
-            # Form validation failed, return validation errors
-            contact_errors = dict(contact_form.errors.items())
-            serviceModal_errors = dict(serviceModal_form.errors.items())
-            return JsonResponse({'success': False, 'errors': {'contact_form': contact_errors, 'serviceModal_form': serviceModal_errors}}, status=400)
+            for field, errors in contact_form.errors.items():
+                for error in errors:
+                    messages.warning(request, f"Error in {field}: {error}")
+            for field, errors in serviceModal_form.errors.items():
+                for error in errors:
+                    messages.warning(request, f"Error in {field}: {error}")
+            return JsonResponse({'success': False})
