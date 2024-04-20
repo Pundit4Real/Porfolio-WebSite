@@ -11,7 +11,7 @@ class ServiceHeroAdmin(admin.ModelAdmin):
     list_display = ['title','description']
 
 class ServicesAdmin(admin.ModelAdmin):
-    list_display = ['service_no','service_title','service_desc']
+    list_display = ['service_title','service_no','service_desc']
 
 class ServicePopUpAdmin(admin.ModelAdmin):
     list_display = ['service_title', 'modal_img',]

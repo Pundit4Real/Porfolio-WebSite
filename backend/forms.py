@@ -87,7 +87,7 @@ class ServicePopUpForm(forms.ModelForm):
             ),
         ) 
         last_name = forms.CharField(
-            required=True,
+            required=False,
             widget=forms.TextInput(
                 attrs={
                     'type':'text',
@@ -118,7 +118,7 @@ class ServicePopUpForm(forms.ModelForm):
         ) 
         service = forms.CharField(
                 required=True,
-                widget=forms.TextInput(),
+                widget=forms.HiddenInput(),
             )
         
         message = forms.CharField(
@@ -133,5 +133,5 @@ class ServicePopUpForm(forms.ModelForm):
         ) 
         class Meta:
             model = ContactUs
-            fields = ['first_name','email','message',]
+            fields = ['first_name','last_name', 'email', 'phone', 'service','message',]
 
