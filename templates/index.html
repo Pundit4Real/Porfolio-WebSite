@@ -295,16 +295,22 @@
                                     <form method="post" action="{% url 'index' %}">
                                         {% csrf_token %}
                                         <div class="form_group">
-                                            {{form.first_name}}
+                                            {{serviceModal_form.first_name}}
                                         </div>
                                         <div class="form_group">
-                                            {{form.last_name}}
+                                            {{serviceModal_form.last_name}}
                                         </div>
                                         <div class="form_group">
-                                            {{form.email}}
+                                            {{serviceModal_form.email}}
                                         </div>
                                         <div class="form_group">
-                                            {{form.message}}
+                                            {{serviceModal_form.phone}}
+                                        </div>
+                                        <div class="form_group">
+                                            <input type="text" name="service" class="form_group" value="{{ pop.service_title }}">
+                                        </div>
+                                        <div class="form_group">
+                                            {{serviceModal_form.message}}
                                         </div>
                                         <div class="form_btn">
                                             <button class="btn tj-btn-primary" type="submit">Send Message</button>
@@ -1038,32 +1044,32 @@
                                     <div class="row gx-3">
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                {{form.first_name}}
+                                                {{contact_form.first_name}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                               {{form.last_name}}
+                                               {{contact_form.last_name}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                {{form.email}}
+                                                {{contact_form.email}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                               {{form.phone}}
+                                               {{contact_form.phone}}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form_group">
-                                              {{form.service}}
+                                              {{contact_form.service}}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form_group">
-                                                {{form.message}}
+                                                {{contact_form.message}}
                                             </div>
                                         </div>
                                         <div class="col-12">
