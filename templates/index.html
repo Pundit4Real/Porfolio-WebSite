@@ -292,7 +292,7 @@
                                         <h3 class="title">Get in Touch</h3>
                                     </div>
 
-                                    <form method="post" action="{% url 'index' %}">
+                                    <form id="contact-form" method="post" action="{% url 'index' %}">
                                         {% csrf_token %}
                                         <div class="form_group">
                                             {{serviceModal_form.first_name}}
@@ -325,7 +325,6 @@
         </div>
         {% endfor %}
         <!-- end: Service Popup -->
-
 
 
         <!-- PORTFOLIO SECTION START -->
@@ -1160,6 +1159,48 @@
             </div>
         </div>
         <!-- END: Contact Form Fail Modal Message End -->
+
+        <!-- BEGIN: Scripts for  showing  Modal Message -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('contact-form').addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent the form from submitting normally
+                    var form = event.target;
+                    var formData = new FormData(form);
+            
+                    // Submit the form using AJAX
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}' // Ensure CSRF token is included
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // If form submission is successful, show the success modal
+                            return response.json();
+                        } else {
+                            console.error('Form submission failed:', response.statusText);
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            $('#message_sent').modal('show');
+                            form.reset();
+                        } else {
+                            $('#message_fail').modal('show'); // Show the error modal
+                            console.error('Form submission error:', data.error_message);
+                        }
+                    })
+
+                });
+            });
+        </script>
+            
+            
+            
     </main>
 
     <!-- FOOTER AREA START -->
