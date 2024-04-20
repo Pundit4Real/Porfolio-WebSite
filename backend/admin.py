@@ -2,6 +2,7 @@ from django.contrib import admin
 from backend.models.hero import Hero
 from backend.models.services import ServiceHero,Services,ServicePopUp
 from backend.models.contact import ContactUs,ContactUsHero
+from backend.models.resume import ResumeHero,Education,Experience
 # Register your models here.
 
 class HeroAdmin(admin.ModelAdmin):
@@ -21,6 +22,13 @@ class ContactUsAdmin(admin.ModelAdmin):
 
 class ContactUsHeroAdmin(admin.ModelAdmin):
     list_display = ['title','phone','email','address']
+class ResumeHeroAdmin(admin.ModelAdmin):
+    list_display = ['exp_title','edu_title']
+
+class ExperienceAdmin(admin.ModelAdmin):
+    list_display = ['company','role','duration']
+class EducationAdmin(admin.ModelAdmin):
+    list_display = ['institute','course_title','duration']
 
 
 
@@ -30,6 +38,9 @@ admin.site.register(Services,ServicesAdmin)
 admin.site.register(ServicePopUp,ServicePopUpAdmin)
 admin.site.register(ContactUs,ContactUsAdmin)
 admin.site.register(ContactUsHero,ContactUsHeroAdmin)
+admin.site.register(ResumeHero,ResumeHeroAdmin)
+admin.site.register(Experience,ExperienceAdmin)
+admin.site.register(Education,EducationAdmin)
 
 
 
