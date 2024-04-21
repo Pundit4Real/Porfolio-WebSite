@@ -3,6 +3,7 @@ from backend.models.hero import Hero
 from backend.models.services import ServiceHero,Services,ServicePopUp
 from backend.models.contact import ContactUs,ContactUsHero
 from backend.models.resume import ResumeHero,Education,Experience
+from backend.models.skills import Skills,SkillsHero
 # Register your models here.
 
 class HeroAdmin(admin.ModelAdmin):
@@ -30,6 +31,11 @@ class ExperienceAdmin(admin.ModelAdmin):
 class EducationAdmin(admin.ModelAdmin):
     list_display = ['institute','course_title','duration']
 
+class SkillsHeroAdmin(admin.ModelAdmin):
+    list_display = ['title','description','id']
+class SkillsAdmin(admin.ModelAdmin):
+    list_display = ['skills_img','rating_percentage','skills_img']
+
 
 
 admin.site.register(Hero,HeroAdmin)
@@ -41,6 +47,8 @@ admin.site.register(ContactUsHero,ContactUsHeroAdmin)
 admin.site.register(ResumeHero,ResumeHeroAdmin)
 admin.site.register(Experience,ExperienceAdmin)
 admin.site.register(Education,EducationAdmin)
+admin.site.register(SkillsHero,SkillsHeroAdmin)
+admin.site.register(Skills,SkillsAdmin)
 
 
 

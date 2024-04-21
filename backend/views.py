@@ -62,6 +62,13 @@ class HeroView(View):
         if Education:
             education = Education.objects.all().order_by('-id')
         print(f'Error fetching data from the databse')
+        
+        if Experience:
+            experience = Experience.objects.all()
+        print(f'Error fetching data from the databse')
+        if Education:
+            education = Education.objects.all().order_by('-id')
+        print(f'Error fetching data from the databse')
 
         context = {
             'heroes': heroes,
