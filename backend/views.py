@@ -7,6 +7,7 @@ from .models.hero import  Hero
 from .models.services import ServiceHero,Services,ServicePopUp
 from .models.contact import ContactUs,ContactUsHero
 from .models.resume import ResumeHero,Education,Experience
+from .models.skills import Skills,SkillsHero
 from .forms import ContactUsForm,ServicePopUpForm
 from .utils import EmailSender
 
@@ -62,12 +63,13 @@ class HeroView(View):
         if Education:
             education = Education.objects.all().order_by('-id')
         print(f'Error fetching data from the databse')
-        
-        if Experience:
-            experience = Experience.objects.all()
+
+        if SkillsHero:
+            skillsHero = SkillsHero.objects.all()
         print(f'Error fetching data from the databse')
-        if Education:
-            education = Education.objects.all().order_by('-id')
+
+        if Skills:
+            skills = Skills.objects.all().order_by('-id')
         print(f'Error fetching data from the databse')
 
         context = {
@@ -80,7 +82,9 @@ class HeroView(View):
             'contacts': contacts,
             'resumeHero':resumeHero,
             'experience':experience,   
-            'education':education,   
+            'education':education,
+            'skillsHero':skillsHero,
+            'skills':skills,   
         }
 
         return render(request, self.template_name, context)
