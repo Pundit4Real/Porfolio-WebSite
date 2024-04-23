@@ -11,7 +11,9 @@ class EmailSender:
         )
         email.send()
     
-    def send_client_email(self, client, email):
+    def send_client_email(self, client):
+
+        email = 'mohammedaalli088@gmail.com'
         message = f"Message from: {client.first_name} {client.last_name}\nEmail: {client.email}\nPhone: {client.phone}\n\n{client.message}"
         data = {
             'email_subject': client.service,

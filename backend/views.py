@@ -6,118 +6,59 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models.hero import  Hero
 from .models.services import ServiceHero,Services,ServicePopUp
 from .models.contact import ContactUs,ContactUsHero
-from .models.resume import ResumeHero,Education,Experience
-from .models.skills import Skills,SkillsHero
 from .forms import ContactUsForm,ServicePopUpForm
 from .utils import EmailSender
 
 
-class HomePageView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
-class HeroView(View):
-    template_name = 'index.html'
 
-    def get(self, request, *args, **kwargs):
-        contact_form = ContactUsForm()
-        serviceModal_form = ServicePopUpForm()
-        
-        try:
-            heroes = Hero.objects.all()
-        except Exception as e:
-            print(f"Error fetching heroes: {e}")
-            heroes = []
+def home(request):
+    form = ServicePopUpForm(request.POST)
 
-        try:
-            service_heroes = ServiceHero.objects.all()
-        except Exception as e:
-            print(f"Error fetching service heroes: {e}")
-            service_heroes = []
+    if request.method == 'POST':
+        form = ServicePopUpForm(request.POST)
 
-        try:
-            services = Services.objects.all()
-        except Exception as e:
-            print(f"Error fetching services: {e}")
-            services = []
-            
-        try:
-            contacts = ContactUsHero.objects.all()
-        except Exception as e:
-            print(f"Error fetching contacts: {e}")
-            contacts = []
+        if form.is_valid():
+            client = form.save()
 
-        try:
-            servicepopups = [(service, ServicePopUp.objects.filter(service_title=service).first()) for service in services]
-        except Exception as e:
-            print(f"Error fetching service popups: {e}")
-            servicepopups = []
-        
-        if ResumeHero:
-            resumeHero = ResumeHero.objects.all()
-        print(f'Error fetching data from the databse')
+            if not EmailSender().send_client_email(client):
+                messages.error(request, 'Request Fail')
+            messages.success(request, 'Your Request has Been Received, We will get in contact with you ')
 
-        if Experience:
-            experience = Experience.objects.all()
-        print(f'Error fetching data from the databse')
+    heroes = Hero.objects.all()
+    service_heroes = ServiceHero.objects.all()
+    services = Services.objects.all()
+    servicepopups = [(service, ServicePopUp.objects.filter(service_title=service).first()) for service in services]
+    contacts = ContactUsHero.objects.all()
+    
 
-        if Education:
-            education = Education.objects.all().order_by('-id')
-        print(f'Error fetching data from the databse')
+    print(services, 'printing servicess ')
 
-        if SkillsHero:
-            skillsHero = SkillsHero.objects.all()
-        print(f'Error fetching data from the databse')
+    context = {
+        'heroes': heroes,
+        'service_heroes': service_heroes,
+        'services': services,
+        'servicepopups': servicepopups,
+        'form': form,
+        'contacts': contacts
+    }
+    return render(request, 'index.html', context)
 
-        if Skills:
-            skills = Skills.objects.all().order_by('-id')
-        print(f'Error fetching data from the databse')
 
-        context = {
-            'heroes': heroes,
-            'service_heroes': service_heroes,
-            'services': services,
-            'servicepopups': servicepopups,
-            'contact_form': contact_form,
-            'serviceModal_form': serviceModal_form,
-            'contacts': contacts,
-            'resumeHero':resumeHero,
-            'experience':experience,   
-            'education':education,
-            'skillsHero':skillsHero,
-            'skills':skills,   
-        }
+def contact_view(request):
+    form = ContactUsForm(request.POST)
 
-        return render(request, self.template_name, context)
+    heroes = Hero.objects.all()
+    service_heroes = ServiceHero.objects.all()
+    services = Services.objects.all()
+    servicepopups = [(service, ServicePopUp.objects.filter(service_title=service).first()) for service in services]
+    contacts = ContactUs.objects.all()
 
-    def post(self, request, *args, **kwargs):
-        contact_form = ContactUsForm(request.POST)
-        serviceModal_form = ServicePopUpForm(request.POST)
-        
-        if contact_form.is_valid():
-            client = contact_form.save()
-            email = 'mohammedaalli088@gmail.com'
-
-            if not EmailSender().send_client_email(client, email):
-                messages.warning(request, 'Emailing Failed!')
-                return JsonResponse({'success': False})
-            else:
-                return JsonResponse({'success': True})
-            
-        elif serviceModal_form.is_valid():
-            client = serviceModal_form.save()
-            email = 'mohammedaalli088@gmail.com'
-            
-            if not EmailSender().send_client_email(client, email):
-                messages.error(request, 'Emailing Failed!')
-                return JsonResponse({'success': False})
-            else:
-                return JsonResponse({'success': True})
-
-        else:
-            for field, errors in contact_form.errors.items():
-                for error in errors:
-                    messages.warning(request, f"Error in {field}: {error}")
-            for field, errors in serviceModal_form.errors.items():
-                for error in errors:
-                    messages.warning(request, f"Error in {field}: {error}")
-            return JsonResponse({'success': False})
+    context = {
+        'heroes': heroes,
+        'service_heroes': service_heroes,
+        'services': services,
+        'servicepopups': servicepopups,
+        'form': form,
+        'contacts': contacts
+    }
+    return render(request, 'index.html',context)

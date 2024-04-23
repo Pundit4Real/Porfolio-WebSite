@@ -51,7 +51,7 @@
 
                     <div class="logo-box">
                         {% for hero in heroes %}
-                        <a href="{% url 'index' %}">
+                        <a href="{% url 'home' %}">
                             <img src="{{hero.logo.url}}" alt="">
                         </a>
                         {% endfor %}
@@ -99,7 +99,7 @@
 
                     <div class="logo-box">
                         {% for hero in heroes %}
-                        <a href="{% url 'index' %}">
+                        <a href="{% url 'home' %}">
                             <img src="{{hero.logo.url}}" alt="">
                         </a>
                         {% endfor %}
@@ -286,14 +286,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-xl-4">
+                        <!-- <div class="col-lg-5 col-xl-4">
                             <div class="tj_main_sidebar">
                                 <div class="sidebar_widget contact_form">
                                     <div class="widget_title">
                                         <h3 class="title">Get in Touch</h3>
                                     </div>
 
-                                    <form id="contact-form" method="post" action="{% url 'index' %}">
+                                    <form id="contact-form" method="POST" action="{% url 'home' %}">
                                         {% csrf_token %}
                                         <div class="form_group">
                                             {{serviceModal_form.first_name}}
@@ -319,7 +319,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -332,13 +332,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        {% for pH in projectsHero %}
                         <div class="section-header text-center">
-                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">My Recent Works</h2>
-                            <p class=" wow fadeInUp" data-wow-delay=".4s">We put your ideas and thus your wishes in the
-                                form of a unique web project that inspires
-                                you
-                                and you customers.</p>
+                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{pH.title}}</h2>
+                            <p class=" wow fadeInUp" data-wow-delay=".4s">{{pH.description}}</p>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -948,22 +947,23 @@
                                 {% endfor %}
                             </div>
                             <div class="tj-contact-form">
-                                <form id="contact-form" method="post" action="{% url 'index' %}">
+                                {% for c in contacts %}
+                                <form id="contact-form" method="POST" action="{% url 'home' %}">
                                     {% csrf_token %}
                                     <div class="row gx-3">
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                {{contact_form.first_name}}
+                                                {{c.first_name}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                               {{contact_form.last_name}}
+                                               {{c.last_name}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form_group">
-                                                {{contact_form.email}}
+                                                {{conta.email}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -987,7 +987,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form>      
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -1032,7 +1033,6 @@
         </section>
         <!-- CONTACT SECTION END -->
        
-       
         <!-- BEGIN: Contact Form Success Modal Message -->
         <div class="modal contact_modal" id="message_sent" tabindex="-1">
             <div class="modal-dialog">
@@ -1052,7 +1052,6 @@
         </div>
         <!-- END: Contact Form Success Modal Message -->
        
-        
         <!-- BEGIN: Contact Form Fail Modal Message -->
         <div class="modal contact_modal failed" id="message_fail" tabindex="-1">
             <div class="modal-dialog">
@@ -1124,41 +1123,38 @@
 
     <script src="{% static 'assets/js/main.js' %}"></script>
 
-    <!-- scripts for displaying the success modal or the failure modal -->
-    
     <script>
-        $(document).ready(function() {
-            $('#contact-form').submit(function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                
-                // Serialize form data
-                var formData = $(this).serialize();
-                
-                // Send AJAX request to the form submission URL
-                console.log("ajax printed and triggered")
-                $.ajax({
-                    url: '',
-                    type: 'POST',
-                    data: formData,
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
-                            // Display the success modal
-                            $('#message_sent').modal('show');
-                        } else {
-                            // Display the failure modal
-                            $('#message_fail').modal('show');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                        $('#message_fail').modal('show');
+      $(document).ready(function() {
+        $("#contact-form").submit(function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            // Serialize form data
+            var formData = $(this).serialize();
+            
+            // Send AJAX request
+            $.ajax({
+                type: "POST",
+                url: " ", // Update with your endpoint URL
+                data: formData,
+                success: function(response) {
+                    if (response.message === "Email sent successfully") {
+                        // Display success modal
+                        $("#message_sent").modal("show");
+                        // Reset form
+                        $('#contact-form')[0].reset();
+                    } else {
+                        // Handle other responses if needed
+                        console.log(response.message);
                     }
-                });
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors if needed
+                    console.error(xhr.responseText);
+                }
             });
         });
+    });
     </script>
-    
     
 </body>
 

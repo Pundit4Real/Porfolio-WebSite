@@ -4,6 +4,7 @@ from backend.models.services import ServiceHero,Services,ServicePopUp
 from backend.models.contact import ContactUs,ContactUsHero
 from backend.models.resume import ResumeHero,Education,Experience
 from backend.models.skills import Skills,SkillsHero
+from backend.models.projects import PortfolioHero,PortfolioItem,PortfolioPopup,GalleryImage
 # Register your models here.
 
 class HeroAdmin(admin.ModelAdmin):
@@ -18,11 +19,19 @@ class ServicesAdmin(admin.ModelAdmin):
 class ServicePopUpAdmin(admin.ModelAdmin):
     list_display = ['service_title', 'modal_img',]
 
-class ContactUsAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name','email','phone','service','message']
+class PortfolioHeroAdmin(admin.ModelAdmin):
+    list_display = ['title','id','description']
 
-class ContactUsHeroAdmin(admin.ModelAdmin):
-    list_display = ['title','phone','email','address']
+class PortfolioItemAdmin(admin.ModelAdmin):
+    list_display = ['title','category','image']
+
+class PortfolioPopupAdmin(admin.ModelAdmin):
+    list_display = ['title','category','client','start_date','designer']
+
+class GalleryImageAdmin(admin.ModelAdmin):
+    list_display = ['image','portfolio_item']
+    
+
 class ResumeHeroAdmin(admin.ModelAdmin):
     list_display = ['exp_title','edu_title']
 
@@ -36,19 +45,34 @@ class SkillsHeroAdmin(admin.ModelAdmin):
 class SkillsAdmin(admin.ModelAdmin):
     list_display = ['skills_img','rating_percentage','skills_img']
 
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name','email','phone','service','message']
+
+class ContactUsHeroAdmin(admin.ModelAdmin):
+    list_display = ['title','phone','email','address']
+
+
 
 
 admin.site.register(Hero,HeroAdmin)
+
 admin.site.register(ServiceHero,ServiceHeroAdmin)
 admin.site.register(Services,ServicesAdmin)
 admin.site.register(ServicePopUp,ServicePopUpAdmin)
-admin.site.register(ContactUs,ContactUsAdmin)
-admin.site.register(ContactUsHero,ContactUsHeroAdmin)
+
+admin.site.register(PortfolioHero,PortfolioHeroAdmin)
+admin.site.register(PortfolioItem,PortfolioItemAdmin)
+admin.site.register(PortfolioPopup,PortfolioPopupAdmin)
+admin.site.register(GalleryImage,GalleryImageAdmin)
+
 admin.site.register(ResumeHero,ResumeHeroAdmin)
 admin.site.register(Experience,ExperienceAdmin)
 admin.site.register(Education,EducationAdmin)
+
 admin.site.register(SkillsHero,SkillsHeroAdmin)
 admin.site.register(Skills,SkillsAdmin)
+admin.site.register(ContactUs,ContactUsAdmin)
+admin.site.register(ContactUsHero,ContactUsHeroAdmin)
 
 
 
