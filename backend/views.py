@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models.hero import  Hero
 from .models.services import ServiceHero,Services,ServicePopUp
 from .models.projects import PortfolioHero, PortfolioItem, PortfolioPopup,Category
+from .models.resume import ResumeHero,Education,Experience
+from .models.skills import SkillsHero,Skills
 from .forms import ContactUsForm,ServicePopUpForm
 from .utils import EmailSender
 
@@ -17,6 +19,11 @@ def home(request):
     porfolio_hero = PortfolioHero.objects.all()
     portfolio_popups = PortfolioPopup.objects.all()
     categories = Category.objects.all()
+    resumeHero = ResumeHero.objects.all()
+    education = Education.objects.all()
+    experience = Experience.objects.all()
+    skillshero = SkillsHero.objects.all()
+    skills = Skills.objects.all()
 
     selected_category = request.GET.get('category')
 
@@ -38,6 +45,11 @@ def home(request):
         'portfolio_popups': portfolio_popups,
         'categories': categories,
         'selected_category': selected_category,
+        'resumeHero':resumeHero,
+        'education':education,
+        'experience':experience,
+        'skillshero':skillshero,
+        'skills':skills,
     }
 
     return render(request, 'index.html', context)

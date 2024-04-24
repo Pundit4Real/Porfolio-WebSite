@@ -15,8 +15,6 @@ class Skills(models.Model):
     skills_img = models.ImageField(upload_to='skills-img',default='img.jpg')
     rating_percentage = models.IntegerField(default=50)
     skills_title = models.CharField(max_length=70,default='python')
-
-
     class Meta:
         verbose_name_plural = 'Skills'
 
