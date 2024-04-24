@@ -5,61 +5,55 @@ class PortfolioHero(models.Model):
     description = models.TextField(max_length=350,default='')
 
     class Meta:
-        verbose_name_plural = 'PortfolioHero'
+        verbose_name_plural = 'Portfolio Hero'
 
     def __str__(self):
         return self.title
     
+class Category(models.Model):
+    name = models.CharField(max_length=100,default='')
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+
+    def __str__(self):
+        return self.name
+    
 class PortfolioItem(models.Model):
-    CATEGORY_CHOICES = [
-        ('uxui', 'UX/UI'),
-        ('branding', 'Branding'),
-        ('mobile-app', 'Mobile App'),
-        ('other', 'Other'),
-    ]
-
     title = models.CharField(max_length=100)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField()
     image = models.ImageField(upload_to='portfolio_images/')
-    modal_content = models.OneToOneField('PortfolioPopup', on_delete=models.CASCADE, related_name='portfolio_item')
-
     class Meta:
-        verbose_name_plural = 'PortfolioItems'
+        verbose_name_plural = 'Portfolio Items'
 
     def __str__(self):
         return self.title
-
 
 class PortfolioPopup(models.Model):
-    title = models.CharField(max_length=100,default='')
-    description = models.TextField(default='')
-    category = models.CharField(max_length=50,default='')
-    client = models.CharField(max_length=100 ,default='')
+    modal_img = models.ImageField(upload_to='Porfolio-popUp-modal -image',default='')
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    live_preview_link = models.URLField()
+    category = models.CharField(max_length=50)
     start_date = models.DateField()
-    designer = models.CharField(max_length=100 ,default='')
-    project_description = models.TextField(default='')
+    client = models.CharField(max_length=100)
+    designer = models.CharField(max_length=100)
+    project_desc = models.TextField(default='')
     story = models.TextField(default='')
     approach = models.TextField(default='')
-
-    # Assuming a one-to-many relationship between PortfolioPopup and images in the gallery
-    # You may need to adjust this depending on your actual implementation
-    gallery_images = models.ManyToManyField('GalleryImage', related_name='popup')
+    portfolio_item = models.OneToOneField(PortfolioItem, on_delete=models.CASCADE, related_name='popup',default='')
+    previous_project = models.ForeignKey('self', on_delete=models.SET_NULL, related_name='next_project_rel', null=True, blank=True)
+    next_project = models.ForeignKey('self', on_delete=models.SET_NULL, related_name='previous_project_rel', null=True, blank=True)
 
     class Meta:
-        verbose_name_plural = 'PortfolioPopups'
-        
+        verbose_name_plural = 'Portfolio Popups'
+
     def __str__(self):
         return self.title
 
 
-class GalleryImage(models.Model):
-    image = models.ImageField(upload_to='portfolio_gallery_images/')
-    portfolio_item = models.ForeignKey(PortfolioItem, on_delete=models.CASCADE, related_name='gallery_images',null=True,blank=True)
-
-    class Meta:
-        verbose_name_plural = 'GalleryImages'
-        
-    def __str__(self):
-        return self.image.name
+class PortfolioPopupImage(models.Model):
+    popup = models.ManyToManyField(PortfolioPopup, related_name='images')
+    image = models.ImageField(upload_to='popup_images/')

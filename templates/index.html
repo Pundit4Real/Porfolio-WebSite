@@ -332,7 +332,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        {% for pH in projectsHero %}
+                        {% for pH in porfolio_hero %}
                         <div class="section-header text-center">
                             <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{pH.title}}</h2>
                             <p class=" wow fadeInUp" data-wow-delay=".4s">{{pH.description}}</p>
@@ -343,63 +343,40 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="portfolio-filter text-center wow fadeInUp" data-wow-delay=".5s">
-                            <div class="button-group filter-button-group">
-                                <button data-filter="*" class="active">All</button>
-                                <button data-filter=".uxui">UX/UI</button>
-                                <button data-filter=".branding">Branding</button>
-                                <button data-filter=".mobile-app">Apps</button>
-                                <button data-filter=".mobile-app">Apps</button>
-                                <div class="active-bg"></div>
+                        <form method="GET">
+                            <div class="portfolio-filter text-center wow fadeInUp" data-wow-delay=".5s">
+                                <div class="button-group filter-button-group">
+                                    <button type="submit" name="category" value="" class="category-button{% if not selected_category %} active{% endif %}">All</button>
+                                    {% for category in categories %}
+                                    <button type="submit" name="category" value="{{ category.name }}" class="category-button{% if selected_category == category.name %} active{% endif %}">{{ category.name }}</button>
+                                    {% endfor %}
+                                    <div class="active-bg"></div>
+                                </div>
                             </div>
-                        </div>
-
+                        </form>
+                        
+                        
                         <div class="portfolio-box wow fadeInUp" data-wow-delay=".6s">
                             <div class="portfolio-sizer"></div>
                             <div class="gutter-sizer"></div>
-                            <div class="portfolio-item branding">
-                                <div class="image-box">
-                                    <img src="{% static 'assets/img/portfolio/2.jpg' %}" alt="">
+                            <div class="portfolio-box wow fadeInUp" data-wow-delay=".6s">
+                                <div class="portfolio-sizer"></div>
+                                <div class="gutter-sizer"></div>
+                                {% for item in portfolio_items %}
+                                <div class="portfolio-item {{ item.category }}">
+                                    <div class="image-box">
+                                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                                    </div>
+                                    <div class="content-box">
+                                        <h3 class="portfolio-title">{{ item.title }}</h3>
+                                        <p>{{ item.description }}</p>
+                                        <i class="flaticon-up-right-arrow"></i>
+                                        <button data-mfp-src="#portfolio-wrapper-{{ forloop.counter }}" class="portfolio-link modal-popup">
+                                            <a href="{% url 'portfolio_detail' item.pk %}"></a>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="content-box">
-                                    <h3 class="portfolio-title">Deloitte</h3>
-                                    <p>Project was about precision and information.</p>
-                                    <i class="flaticon-up-right-arrow"></i>
-                                    <button data-mfp-src="{% static '#portfolio-wrapper' %}" class="portfolio-link modal-popup"></button>
-                                </div>
-                            </div>
-                            <div class="portfolio-item uxui">
-                                <div class="image-box">
-                                    <img src="{% static 'assets/img/portfolio/1.jpg' %}" alt="">
-                                </div>
-                                <div class="content-box">
-                                    <h3 class="portfolio-title">New Age</h3>
-                                    <p>Project was about precision and information.</p>
-                                    <i class="flaticon-up-right-arrow"></i>
-                                    <button data-mfp-src="{% static '#portfolio-wrapper' %}" class="portfolio-link modal-popup"></button>
-                                </div>
-                            </div>
-                            <div class="portfolio-item mobile-app">
-                                <div class="image-box">
-                                    <img src="{% static 'assets/img/portfolio/3.jpg' %}" alt="">
-                                </div>
-                                <div class="content-box">
-                                    <h3 class="portfolio-title">Sebastian</h3>
-                                    <p>Project was about precision and information.</p>
-                                    <i class="flaticon-up-right-arrow"></i>
-                                    <button data-mfp-src="{% static '#portfolio-wrapper' %}" class="portfolio-link modal-popup"></button>
-                                </div>
-                            </div>
-                            <div class="portfolio-item branding">
-                                <div class="image-box">
-                                    <img src="{% static 'assets/img/portfolio/4.jpg' %}" alt="">
-                                </div>
-                                <div class="content-box">
-                                    <h3 class="portfolio-title">Mochnix</h3>
-                                    <p>Project was about precision and information.</p>
-                                    <i class="flaticon-up-right-arrow"></i>
-                                    <button data-mfp-src="{% static '#portfolio-wrapper' %}" class="portfolio-link modal-popup"></button>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -409,73 +386,53 @@
         <!-- PORTFOLIO SECTION END -->
 
         <!-- start: Portfolio Popup -->
-        <div id="portfolio-wrapper" class="popup_content_area zoom-anim-dialog mfp-hide">
+        {% for item in portfolio_popups %}
+        <div id="portfolio-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
             <div class="popup_modal_img">
-                <img src="{% static 'assets/img/portfolio/modal-img.jpg' %}" alt="">
+                <img src="{{ item.modal_img.url }}" alt="{{ item.title }}">
             </div>
 
             <div class="popup_modal_content">
                 <div class="portfolio_info">
                     <div class="portfolio_info_text">
-                        <h2 class="title">DStudio</h2>
+                        <h2 class="title">{{ item.title }}</h2>
                         <div class="desc">
-                            <p>They are was greater open above shelter lets itself under appear sixth open gathering
-                                made
-                                upon can't own above midst gathering gathered he one us saying can't divide.</p>
+                            <p>{{ item.description }}</p>
                         </div>
-                        <a href="#" class="btn tj-btn-primary">live preview <i class="fal fa-arrow-right"></i></a>
+                        <a href="{{ item.live_preview_link }}" class="btn tj-btn-primary">live preview <i class="fal fa-arrow-right"></i></a>
                     </div>
                     <div class="portfolio_info_items">
                         <div class="info_item">
                             <div class="key">Category</div>
-                            <div class="value">Web Design</div>
+                            <div class="value">{{ item.category }}</div>
                         </div>
                         <div class="info_item">
                             <div class="key">Client</div>
-                            <div class="value">Artboard Studio</div>
+                            <div class="value">{{ item.client }}</div>
                         </div>
                         <div class="info_item">
                             <div class="key">Start Date</div>
-                            <div class="value">August 20, 2023</div>
+                            <div class="value">{{ item.start_date }}</div>
                         </div>
                         <div class="info_item">
                             <div class="key">Designer</div>
-                            <div class="value"><a href="#">ThemeJunction</a></div>
+                            <div class="value">{{ item.designer }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="portfolio_gallery owl-carousel">
+                    {% for image in item.images.all %} 
                     <div class="gallery_item">
-                        <img src="{% static 'assets/img/portfolio-gallery/p-gallery-1.jpg' %}" alt="">
+                        <img src="{{image.image.url}}" alt="">
                     </div>
-                    <div class="gallery_item">
-                        <img src="{% static 'assets/img/portfolio-gallery/p-gallery-2.jpg' %}" alt="">
-                    </div>
-                    <div class="gallery_item">
-                        <img src="{% static 'assets/img/portfolio-gallery/p-gallery-3.jpg' %}" alt="">
-                    </div>
-                    <div class="gallery_item">
-                        <img src="{% static 'assets/img/portfolio-gallery/p-gallery-4.jpg' %}" alt="">
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <div class="portfolio_description">
                     <h2 class="title">Project Description</h2>
                     <div class="desc">
-                        <p>The goal is there are many variations of passages of Lorem Ipsum available, but the majority
-                            have
-                            suffered alteration in some form, by injected humour, or randomised words which don't look
-                            even
-                            slightly believable.</p>
-
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even
-                            slightly
-                            believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there
-                            isn't
-                            anything embarrassing hidden in the middle of text.</p>
+                        <p>{{ item.project_desc }}</p>
                     </div>
                 </div>
 
@@ -485,17 +442,7 @@
                             <h4 class="title">The story</h4>
                         </div>
                         <div class="story_content">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look
-                                even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to
-                                be
-                                sure there isn't anything embarrassing hidden in the middle of text. There are many
-                                variations of passages of Lorem Ipsum available, but the majority have suffered
-                                alteration
-                                in some form, by injected humour, or randomised words which don't look even slightly
-                                believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there
-                                isn't anything embarrassing hidden in the middle of text.</p>
+                            <p>{{ item.story }}</p>
                         </div>
                     </div>
                     <div class="portfolio_approach">
@@ -503,45 +450,37 @@
                             <h4 class="title">OUR APPROACH</h4>
                         </div>
                         <div class="approach_content">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look
-                                even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to
-                                be
-                                sure there isn't anything embarrassing hidden in the middle of text. There are many
-                                variations of passages of Lorem Ipsum available, but the majority have suffered
-                                alteration
-                                in some form, by injected humour, or randomised words which don't look even slightly
-                                believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there
-                                isn't anything embarrassing hidden in the middle of text.</p>
+                            <p>{{ item.approach }}</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="portfolio_navigation">
                     <div class="navigation_item prev-project">
                         <a href="#" class="project">
                             <i class="fal fa-arrow-left"></i>
                             <div class="nav_project">
                                 <div class="label">Previous Project</div>
-                                <h3 class="title">Sebastian</h3>
+                                <h3 class="title">{{ item.previous_project.title }}</h3>
                             </div>
                         </a>
                     </div>
-
+                    
                     <div class="navigation_item next-project">
                         <a href="#" class="project">
                             <div class="nav_project">
                                 <div class="label">Next Project</div>
-                                <h3 class="title">Qwillo</h3>
+                                <h3 class="title">{{ item.next_project.title }}</h3>
                             </div>
                             <i class="fal fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
+            
             </div>
         </div>
+        {% endfor %}
         <!-- end: Portfolio Popup -->
+
 
         <!-- RESUME SECTION START -->
         <section class="resume-section" id="resume-section">
@@ -1121,41 +1060,38 @@
     <script src="{% static 'assets/js/magnific-popup.js' %}"></script>
     <script src="{% static 'assets/js/validate.min.js' %}"></script>
 
+
     <script src="{% static 'assets/js/main.js' %}"></script>
 
     <script>
-      $(document).ready(function() {
-        $("#contact-form").submit(function(e) {
-            e.preventDefault(); // Prevent default form submission
-            
-            // Serialize form data
-            var formData = $(this).serialize();
-            
-            // Send AJAX request
-            $.ajax({
-                type: "POST",
-                url: " ", // Update with your endpoint URL
-                data: formData,
-                success: function(response) {
-                    if (response.message === "Email sent successfully") {
-                        // Display success modal
-                        $("#message_sent").modal("show");
-                        // Reset form
-                        $('#contact-form')[0].reset();
-                    } else {
-                        // Handle other responses if needed
-                        console.log(response.message);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Handle errors if needed
-                    console.error(xhr.responseText);
+        $(document).ready(function() {
+            // When a category button is clicked
+            $('.category-button').click(function() {
+                // Remove the 'active' class from all category buttons
+                $('.category-button').removeClass('active');
+                // Add the 'active' class to the clicked category button
+                $(this).addClass('active');
+                
+                // Get the data-filter value of the clicked category button
+                var filterValue = $(this).attr('data-filter');
+
+                // Hide all portfolio items
+                $('.portfolio-item').hide();
+
+                // If 'All' is selected, show all portfolio items
+                if (filterValue === '?categories=') {
+                    $('.portfolio-item').show();
+                } else {
+                    // Otherwise, show only portfolio items that match the selected category
+                    $(filterValue).show();
                 }
             });
         });
-    });
     </script>
+
     
+
+
 </body>
 
 </html>

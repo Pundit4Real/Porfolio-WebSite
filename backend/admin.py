@@ -4,7 +4,7 @@ from backend.models.services import ServiceHero,Services,ServicePopUp
 from backend.models.contact import ContactUs,ContactUsHero
 from backend.models.resume import ResumeHero,Education,Experience
 from backend.models.skills import Skills,SkillsHero
-from backend.models.projects import PortfolioHero,PortfolioItem,PortfolioPopup,GalleryImage
+from backend.models.projects import PortfolioHero,PortfolioItem,PortfolioPopup,PortfolioPopupImage,Category
 # Register your models here.
 
 class HeroAdmin(admin.ModelAdmin):
@@ -28,10 +28,15 @@ class PortfolioItemAdmin(admin.ModelAdmin):
 class PortfolioPopupAdmin(admin.ModelAdmin):
     list_display = ['title','category','client','start_date','designer']
 
-class GalleryImageAdmin(admin.ModelAdmin):
-    list_display = ['image','portfolio_item']
+class PortfolioPopupImageAdmin(admin.ModelAdmin):
+    def popup_title(self, obj):
+        return ", ".join([popup.title for popup in obj.popup.all()])
     
+    popup_title.short_description = 'Popup Titles'
 
+    list_display = ('id', 'popup_title', 'image')
+
+    
 class ResumeHeroAdmin(admin.ModelAdmin):
     list_display = ['exp_title','edu_title']
 
@@ -63,7 +68,8 @@ admin.site.register(ServicePopUp,ServicePopUpAdmin)
 admin.site.register(PortfolioHero,PortfolioHeroAdmin)
 admin.site.register(PortfolioItem,PortfolioItemAdmin)
 admin.site.register(PortfolioPopup,PortfolioPopupAdmin)
-admin.site.register(GalleryImage,GalleryImageAdmin)
+admin.site.register(PortfolioPopupImage,PortfolioPopupImageAdmin)
+admin.site.register(Category)
 
 admin.site.register(ResumeHero,ResumeHeroAdmin)
 admin.site.register(Experience,ExperienceAdmin)
