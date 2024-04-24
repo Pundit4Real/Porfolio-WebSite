@@ -8,6 +8,7 @@ from .models.services import ServiceHero,Services,ServicePopUp
 from .models.projects import PortfolioHero, PortfolioItem, PortfolioPopup,Category
 from .models.resume import ResumeHero,Education,Experience
 from .models.skills import SkillsHero,Skills
+from .models.testimonials import Testimonial,TestimonialHero
 from .forms import ContactUsForm,ServicePopUpForm
 from .utils import EmailSender
 
@@ -24,6 +25,8 @@ def home(request):
     experience = Experience.objects.all()
     skillshero = SkillsHero.objects.all()
     skills = Skills.objects.all()
+    testimonialhero = TestimonialHero.objects.all()
+    testimonials = Testimonial.objects.all().order_by('-id')
 
     selected_category = request.GET.get('category')
 
@@ -50,6 +53,8 @@ def home(request):
         'experience':experience,
         'skillshero':skillshero,
         'skills':skills,
+        'testimonialhero':testimonialhero,
+        'testimonials':testimonials
     }
 
     return render(request, 'index.html', context)

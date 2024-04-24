@@ -5,6 +5,7 @@ from backend.models.contact import ContactUs,ContactUsHero
 from backend.models.resume import ResumeHero,Education,Experience
 from backend.models.skills import Skills,SkillsHero
 from backend.models.projects import PortfolioHero,PortfolioItem,PortfolioPopup,PortfolioPopupImage,Category
+from backend.models.testimonials import TestimonialHero,Testimonial
 # Register your models here.
 
 class HeroAdmin(admin.ModelAdmin):
@@ -47,8 +48,15 @@ class EducationAdmin(admin.ModelAdmin):
 
 class SkillsHeroAdmin(admin.ModelAdmin):
     list_display = ['title','description','id']
+
 class SkillsAdmin(admin.ModelAdmin):
     list_display = ['skills_img','rating_percentage','skills_img']
+
+class TestimonialHeroAdmin(admin.ModelAdmin):
+    list_display = ['title','id']
+
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ['name','role','image']
 
 class ContactUsAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name','email','phone','service','message']
@@ -78,6 +86,10 @@ admin.site.register(Education,EducationAdmin)
 admin.site.register(SkillsHero,SkillsHeroAdmin)
 admin.site.register(Skills,SkillsAdmin)
 admin.site.register(ContactUs,ContactUsAdmin)
+
+admin.site.register(TestimonialHero,TestimonialHeroAdmin)
+admin.site.register(Testimonial,TestimonialAdmin)
+
 admin.site.register(ContactUsHero,ContactUsHeroAdmin)
 
 
