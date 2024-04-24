@@ -711,9 +711,9 @@
                     <div class="col-lg-6 col-md-7 order-2 order-md-1">
                         <div class="contact-form-box wow fadeInLeft" data-wow-delay=".3s">
                             <div class="section-header">
-                                {% for c in contacts %}
-                                <h2 class="section-title">{{c.title}}</h2>
-                                <p>{{c.desc}}</p>
+                                {% for cH in contacthero %}
+                                <h2 class="section-title">{{cH.title}}</h2>
+                                <p>{{cH.desc}}</p>
                                 {% endfor %}
                             </div>
                             <div class="tj-contact-form">
@@ -765,7 +765,7 @@
 
                     <div class="col-lg-5 offset-lg-1 col-md-5  d-flex flex-wrap align-items-center  order-1 order-md-2">
                         <div class="contact-info-list">
-                            {% for c in contacts %}
+                            {% for cH in contacthero %}
                             <ul class="ul-reset">
                                 <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".4s">
                                     <div class="icon-box">
@@ -773,7 +773,7 @@
                                     </div>
                                     <div class="text-box">
                                         <p>Phone</p>
-                                        <a href="tel:0123456789">{{c.phone}}</a>
+                                        <a href="tel:0123456789">{{cH.phone}}</a>
                                     </div>
                                 </li>
                                 <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".5s">
@@ -782,7 +782,7 @@
                                     </div>
                                     <div class="text-box">
                                         <p>Email</p>
-                                        <a href="mailto:mohammedaalli088@gmail.com">{{c.email}}</a>
+                                        <a href="mailto:mohammedaalli088@gmail.com">{{cH.email}}</a>
                                     </div>
                                 </li>
                                 <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".6s">
@@ -791,7 +791,7 @@
                                     </div>
                                     <div class="text-box">
                                         <p>Address</p>
-                                        <a href="#">{{c.address}}</a>
+                                        <a href="#">{{cH.address}}</a>
                                     </div>
                                 </li>
                             </ul>                            

@@ -9,7 +9,8 @@ from .models.projects import PortfolioHero, PortfolioItem, PortfolioPopup,Catego
 from .models.resume import ResumeHero,Education,Experience
 from .models.skills import SkillsHero,Skills
 from .models.testimonials import Testimonial,TestimonialHero
-from .forms import ContactUsForm,ServicePopUpForm
+from .models.contact import ContactUs,ContactUsHero
+from .forms import ContactUsForm
 from .utils import EmailSender
 
 def home(request):
@@ -58,3 +59,27 @@ def home(request):
     }
 
     return render(request, 'index.html', context)
+
+def contact_us(request):
+    contacts = ContactUs.objects.all()
+    contacthero = ContactUsHero.objects.all()
+
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Send email notification to admin
+            email_sender = EmailSender()
+            email_sender.send_client_email(form.instance)
+            return redirect('index')  # Replace 'thank_you_page' with the URL name of your thank you page
+    else:
+        form = ContactUsForm()
+
+    context = {
+        'form': form,
+        'contacts':contacts,
+        'contacthero':contacthero,
+
+    }
+    
+    return render(request, 'index.html',context)
