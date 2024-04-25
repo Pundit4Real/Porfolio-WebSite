@@ -1,8 +1,5 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views import View
-from django.core.mail import send_mail
-from django.contrib import messages
-from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import render
+from django.http import  JsonResponse
 from .models.hero import  Hero
 from .models.services import ServiceHero,Services,ServicePopUp
 from .models.projects import PortfolioHero, PortfolioItem, PortfolioPopup,Category
@@ -27,7 +24,7 @@ def home(request):
 
             return JsonResponse({'success': True})
         else:
-            return JsonResponse({'success': False})  # Return failure JSON response
+            return JsonResponse({'success': False})  
 
     else:
         form = ContactUsForm()
@@ -46,8 +43,6 @@ def home(request):
     skills = Skills.objects.all()
     testimonialhero = TestimonialHero.objects.all()
     testimonials = Testimonial.objects.all().order_by('-id')
-
-    # contacts = ContactUs.objects.all()
 
     selected_category = request.GET.get('category')
 
