@@ -1,7 +1,6 @@
 from django import forms
 from .models.contact import ContactUs
 from .models.services import Services
-
 class ContactUsForm(forms.ModelForm):
 
     first_name = forms.CharField(
@@ -61,7 +60,7 @@ class ContactUsForm(forms.ModelForm):
 
     service = forms.ModelChoiceField(
         queryset=Services.objects.all(),
-        empty_label="Select a service",
+        empty_label="Choose a service",
         widget=forms.Select(
             attrs={
                 'class': 'form_group',

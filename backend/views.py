@@ -9,11 +9,29 @@ from .models.projects import PortfolioHero, PortfolioItem, PortfolioPopup,Catego
 from .models.resume import ResumeHero,Education,Experience
 from .models.skills import SkillsHero,Skills
 from .models.testimonials import Testimonial,TestimonialHero
-from .models.contact import ContactUs,ContactUsHero
+from .models.contact import ContactUsHero
 from .forms import ContactUsForm
 from .utils import EmailSender
 
 def home(request):
+    contacthero = ContactUsHero.objects.all()
+    form = ContactUsForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            # Send email notification to admin
+            email_sender = EmailSender()
+            email_sender.send_client_email(form.instance)
+            success_flag = True
+            print("Success Flag:", success_flag)
+
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False})  # Return failure JSON response
+
+    else:
+        form = ContactUsForm()
+
     heroes = Hero.objects.all()
     service_heroes = ServiceHero.objects.all()
     services = Services.objects.all()
@@ -28,6 +46,8 @@ def home(request):
     skills = Skills.objects.all()
     testimonialhero = TestimonialHero.objects.all()
     testimonials = Testimonial.objects.all().order_by('-id')
+
+    # contacts = ContactUs.objects.all()
 
     selected_category = request.GET.get('category')
 
@@ -55,31 +75,12 @@ def home(request):
         'skillshero':skillshero,
         'skills':skills,
         'testimonialhero':testimonialhero,
-        'testimonials':testimonials
+        'testimonials':testimonials,
+        'form': form,
+        'contacthero':contacthero,
+        'success_flag': success_flag if 'success_flag' in locals() else False,
+
     }
 
     return render(request, 'index.html', context)
 
-def contact_us(request):
-    contacts = ContactUs.objects.all()
-    contacthero = ContactUsHero.objects.all()
-
-    if request.method == 'POST':
-        form = ContactUsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # Send email notification to admin
-            email_sender = EmailSender()
-            email_sender.send_client_email(form.instance)
-            return redirect('index')  # Replace 'thank_you_page' with the URL name of your thank you page
-    else:
-        form = ContactUsForm()
-
-    context = {
-        'form': form,
-        'contacts':contacts,
-        'contacthero':contacthero,
-
-    }
-    
-    return render(request, 'index.html',context)
