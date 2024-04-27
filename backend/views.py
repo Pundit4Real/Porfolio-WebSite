@@ -53,7 +53,7 @@ def home(request):
             portfolio_items = PortfolioItem.objects.filter(category__name=selected_category)
     else:
         portfolio_items = PortfolioItem.objects.all()
-
+#context 
     context = {
         'heroes': heroes,
         'service_heroes': service_heroes,
