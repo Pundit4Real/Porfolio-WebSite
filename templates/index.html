@@ -48,893 +48,892 @@
     </script>
     <!--End of Tawk.to Script-->
 
-    
-<body class="light-mode">
+    <body class="light-mode">
     <!-- start: Back To Top -->
-    <div class="progress-wrap" id="scrollUp">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-        </svg>
-    </div>
-    <!-- end: Back To Top -->
-
-    <!-- HEADER START -->
-    <header class="tj-header-area header-absolute">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-wrap align-items-center">
-
-                    <div class="logo-box">
-                        {% for hero in heroes %}
-                        <a href="{% url 'home' %}">
-                            <img src="{{hero.logo.url}}" alt="">
-                        </a>
-                        {% endfor %}
-                    </div>
-
-                    <div class="header-info-list d-none d-md-inline-block">
-                        <ul class="ul-reset">
-                            <li><a href="mailto:mohammedaalli088@gmail.com">Email Me Now !</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="header-menu">
-                        <nav>
-                            <ul>
-                                <li><a href="#services-section">Services</a></li>
-                                <li><a href="#works-section">Works</a></li>
-                                <li><a href="#resume-section">Resume</a></li>
-                                <li><a href="#skills-section">Skills</a></li>
-                                <li><a href="#testimonials-section">Testimonials</a></li>
-                                <li><a href="#contact-section">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <div class="header-button">
-                        <a href="#contact-section" class="btn tj-btn-primary">Hire me!</a>
-                    </div>
-
-                    <div class="menu-bar d-lg-none">
-                        <button>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div class="progress-wrap" id="scrollUp">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+            </svg>
         </div>
-    </header>
-    <header class="tj-header-area header-2 header-sticky sticky-out">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-wrap align-items-center">
+        <!-- end: Back To Top -->
 
-                    <div class="logo-box">
-                        {% for hero in heroes %}
-                        <a href="{% url 'home' %}">
-                            <img src="{{hero.logo.url}}" alt="">
-                        </a>
-                        {% endfor %}
-                    </div>
-
-                    <div class="header-info-list d-none d-md-inline-block">
-                        <ul class="ul-reset">
-                            <li><a href="mailto:mohammedaalli088@gmail.com">Email Me Now !</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="header-menu">
-                        <nav>
-                            <ul>
-                                <li><a href="#services-section">Services</a></li>
-                                <li><a href="#works-section">Works</a></li>
-                                <li><a href="#resume-section">Resume</a></li>
-                                <li><a href="#skills-section">Skills</a></li>
-                                <li><a href="#testimonials-section">Testimonials</a></li>
-                                <li><a href="#contact-section">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <div class="header-button">
-                        <a href="#" class="btn tj-btn-primary">Hire me!</a>
-                    </div>
-
-                    <div class="menu-bar d-lg-none">
-                        <button>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- HEADER END -->
-
-    <main class="site-content" id="content">
-        <!-- HERO SECTION START -->
-        {% for hero in heroes %}
-        <section class="hero-section d-flex align-items-center" id="intro">
-            <div class="intro_text">
-                <svg viewbox="0 0 1320 300">
-                    <text x="45%" y="55%" text-anchor="middle">
-                        HI
-                    </text>
-                </svg>
-            </div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="hero-content-box">
-                            <span class="hero-sub-title">{{hero.sub_title}}</span>
-                            <h1 class="hero-title">{{hero.title1}} +<br>{{hero.title2}}</h1>
-                            <div class="hero-image-box d-md-none text-center">
-                                <img src="{{hero.hero_image.url}}" alt="">
-                            </div>
-
-                            <p class="lead">{{ hero.description}}</p>
-                            <div class="button-box d-flex flex-wrap align-items-center">
-                                <a href="{{hero.cv.url}}" download class="btn tj-btn-secondary">Download CV <i class="flaticon-download"></i></a>
-                                <a href="javascript:printCV('{{ hero.cv.url }}')" class="btn tj-btn-primary">Print CV <i class="flaticon-printer"></i></a>
-                                <!-- Scripts for printing the cv.pdf file -->
-                                <script>
-                                    function printCV(cvUrl) {
-                                        var cvWindow = window.open(cvUrl);
-                                        cvWindow.print();
-                                    }
-                                </script>
-                                <ul class="ul-reset social-icons">
-                                    <li><a href="https://twitter.com/punditiTech"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa-light fa-basketball"></i></a></li>
-                                    <li><a href="https://linkedin.com/in/mohammed-ali7"><i class="fa-brands fa-linkedin-in"></i></a></li> 
-                                    <li><a href="https://github.com/Pundit4Real"><i class="fa-brands fa-github"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-none d-md-block">
-                        <div class="hero-image-box text-center">
-                            <img src="{{hero.hero_image.url}}" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="funfact-area">
-                    <div class="row">
-                        <div class="col-6 col-lg-3">
-                            <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
-                                <div class="number"><span class="odometer" data-count="{{hero.years_exp}}">0</span></div>
-                                <div class="text">Years of <br>Experience</div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
-                                <div class="number"><span class="odometer" data-count="{{hero.no_completed_proj}}">0</span>+</div>
-                                <div class="text">Project <br>Completed</div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
-                                <div class="number"><span class="odometer" data-count="{{hero.no_clients}}">0</span>K</div>
-                                <div class="text">Happy <br>Clients</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        {% endfor %}
-        <!-- HERO SECTION END -->
-
-        <!-- SERVICES SECTION START -->
-        <section class="services-section" id="services-section">
+        <!-- HEADER START -->
+        <header class="tj-header-area header-absolute">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        {% for sh in service_heroes %}
-                        <div class="section-header text-center">
-                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{ sh.title }}</h2>
-                            <p class="wow fadeInUp" data-wow-delay=".4s">{{ sh.description }}</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
+                    <div class="col-12 d-flex flex-wrap align-items-center">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="services-widget position-relative">
-                            {% for s in services %}
-                            <div class="service-item current d-flex flex-wrap align-items-center wow fadeInUp" data-wow-delay=".5s">
-                                <div class="left-box d-flex flex-wrap align-items-center">
-                                    <span class="number">{{ s.service_no }}</span>
-                                    <h3 class="service-title">{{ s.service_title }}</h3>
-                                </div>
-                                <div class="right-box">
-                                    <p>{{ s.service_desc }}</p>
-                                </div>
-                                <i class="flaticon-up-right-arrow"></i>
-                                <button data-mfp-src="#service-wrapper-{{ forloop.counter }}" class="service-link modal-popup"></button>
-                            </div>
+                        <div class="logo-box">
+                            {% for hero in heroes %}
+                            <a href="{% url 'home' %}">
+                                <img src="{{hero.logo.url}}" alt="">
+                            </a>
                             {% endfor %}
-                            <div class="active-bg wow fadeInUp" data-wow-delay=".5s"></div>
+                        </div>
+
+                        <div class="header-info-list d-none d-md-inline-block">
+                            <ul class="ul-reset">
+                                <li><a href="mailto:mohammedaalli088@gmail.com">Email Me Now !</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="header-menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="#services-section">Services</a></li>
+                                    <li><a href="#works-section">Works</a></li>
+                                    <li><a href="#resume-section">Resume</a></li>
+                                    <li><a href="#skills-section">Skills</a></li>
+                                    <li><a href="#testimonials-section">Testimonials</a></li>
+                                    <li><a href="#contact-section">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="header-button">
+                            <a href="#contact-section" class="btn tj-btn-primary">Hire me!</a>
+                        </div>
+
+                        <div class="menu-bar d-lg-none">
+                            <button>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- SERVICES SECTION END -->
+        </header>
+        <header class="tj-header-area header-2 header-sticky sticky-out">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex flex-wrap align-items-center">
 
-        <!-- start: Service Popup -->
-        {% for s, pop in servicepopups %}
-        <div id="service-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
-            <div class="popup_modal_img">
-                <img src="{{ pop.modal_img.url }}" alt="">
+                        <div class="logo-box">
+                            {% for hero in heroes %}
+                            <a href="{% url 'home' %}">
+                                <img src="{{hero.logo.url}}" alt="">
+                            </a>
+                            {% endfor %}
+                        </div>
+
+                        <div class="header-info-list d-none d-md-inline-block">
+                            <ul class="ul-reset">
+                                <li><a href="mailto:mohammedaalli088@gmail.com">Email Me Now !</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="header-menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="#services-section">Services</a></li>
+                                    <li><a href="#works-section">Works</a></li>
+                                    <li><a href="#resume-section">Resume</a></li>
+                                    <li><a href="#skills-section">Skills</a></li>
+                                    <li><a href="#testimonials-section">Testimonials</a></li>
+                                    <li><a href="#contact-section">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="header-button">
+                            <a href="#" class="btn tj-btn-primary">Hire me!</a>
+                        </div>
+
+                        <div class="menu-bar d-lg-none">
+                            <button>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </header>
+        <!-- HEADER END -->
 
-            <div class="popup_modal_content">
-                <div class="service_details">
-                    <div class="row">
-                        <div class="col-lg-7 col-xl-8">
-                            <div class="service_details_content">
-                                <div class="service_info">
-                                    <h6 class="subtitle">SERVICES</h6>
-                                    <h2 class="title">{{ pop.service_title }}</h2>
-                                    <div class="desc">
-                                        <p>{{ pop.description }}</p>
-                                    </div>
+        <main class="site-content" id="content">
+            <!-- HERO SECTION START -->
+            {% for hero in heroes %}
+            <section class="hero-section d-flex align-items-center" id="intro">
+                <div class="intro_text">
+                    <svg viewbox="0 0 1320 300">
+                        <text x="45%" y="55%" text-anchor="middle">
+                            HI
+                        </text>
+                    </svg>
+                </div>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="hero-content-box">
+                                <span class="hero-sub-title">{{hero.sub_title}}</span>
+                                <h1 class="hero-title">{{hero.title1}} +<br>{{hero.title2}}</h1>
+                                <div class="hero-image-box d-md-none text-center">
+                                    <img src="{{hero.hero_image.url}}" alt="">
+                                </div>
 
-                                    <h3 class="title">Services Process</h3>
-                                    <div class="desc">
-                                        <p>{{ pop.process_descr }}</p>
-                                    </div>
-                                    <ul>
-                                        {% for item in pop.list_property %}
-                                        <li>{{ item }}</li>
-                                        {% endfor %}
+                                <p class="lead">{{ hero.description}}</p>
+                                <div class="button-box d-flex flex-wrap align-items-center">
+                                    <a href="{{hero.cv.url}}" download class="btn tj-btn-secondary">Download CV <i class="flaticon-download"></i></a>
+                                    <a href="javascript:printCV('{{ hero.cv.url }}')" class="btn tj-btn-primary">Print CV <i class="flaticon-printer"></i></a>
+                                    <!-- Scripts for printing the cv.pdf file -->
+                                    <script>
+                                        function printCV(cvUrl) {
+                                            var cvWindow = window.open(cvUrl);
+                                            cvWindow.print();
+                                        }
+                                    </script>
+                                    <ul class="ul-reset social-icons">
+                                        <li><a href="https://twitter.com/punditiTech"><i class="fa-brands fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa-light fa-basketball"></i></a></li>
+                                        <li><a href="https://linkedin.com/in/mohammed-ali7"><i class="fa-brands fa-linkedin-in"></i></a></li> 
+                                        <li><a href="https://github.com/Pundit4Real"><i class="fa-brands fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-lg-5 col-xl-4">
-                            <div class="tj_main_sidebar">
-                                <div class="sidebar_widget contact_form">
-                                    <div class="widget_title">
-                                        <h3 class="title">Get in Touch</h3>
-                                    </div>
+                        <div class="col-md-6 d-none d-md-block">
+                            <div class="hero-image-box text-center">
+                                <img src="{{hero.hero_image.url}}" alt="">
+                            </div>
+                        </div>
+                    </div>
 
-                                    <form id="contact-form" method="POST" action="{% url 'home' %}">
-                                        {% csrf_token %}
-                                        <div class="form_group">
-                                            {{serviceModal_form.first_name}}
-                                        </div>
-                                        <div class="form_group">
-                                            {{serviceModal_form.last_name}}
-                                        </div>
-                                        <div class="form_group">
-                                            {{serviceModal_form.email}}
-                                        </div>
-                                        <div class="form_group">
-                                            {{serviceModal_form.phone}}
-                                        </div>
-                                        <div class="form_group">
-                                            <input type="text" readonly name="service" class="form_group" value="{{ pop.service_title }}">
-                                        </div>
-                                        <div class="form_group">
-                                            {{serviceModal_form.message}}
-                                        </div>
-                                        <div class="form_btn">
-                                            <button class="btn tj-btn-primary" type="submit">Send Message</button>
-                                        </div>
-                                    </form>
+                    <div class="funfact-area">
+                        <div class="row">
+                            <div class="col-6 col-lg-3">
+                                <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
+                                    <div class="number"><span class="odometer" data-count="{{hero.years_exp}}">0</span></div>
+                                    <div class="text">Years of <br>Experience</div>
                                 </div>
                             </div>
-                        </div> -->
+                            <div class="col-6 col-lg-3">
+                                <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
+                                    <div class="number"><span class="odometer" data-count="{{hero.no_completed_proj}}">0</span>+</div>
+                                    <div class="text">Project <br>Completed</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
+                                    <div class="number"><span class="odometer" data-count="{{hero.no_clients}}">0</span>K</div>
+                                    <div class="text">Happy <br>Clients</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endfor %}
+            <!-- HERO SECTION END -->
+
+            <!-- SERVICES SECTION START -->
+            <section class="services-section" id="services-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for sh in service_heroes %}
+                            <div class="section-header text-center">
+                                <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{ sh.title }}</h2>
+                                <p class="wow fadeInUp" data-wow-delay=".4s">{{ sh.description }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="services-widget position-relative">
+                                {% for s in services %}
+                                <div class="service-item current d-flex flex-wrap align-items-center wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="left-box d-flex flex-wrap align-items-center">
+                                        <span class="number">{{ s.service_no }}</span>
+                                        <h3 class="service-title">{{ s.service_title }}</h3>
+                                    </div>
+                                    <div class="right-box">
+                                        <p>{{ s.service_desc }}</p>
+                                    </div>
+                                    <i class="flaticon-up-right-arrow"></i>
+                                    <button data-mfp-src="#service-wrapper-{{ forloop.counter }}" class="service-link modal-popup"></button>
+                                </div>
+                                {% endfor %}
+                                <div class="active-bg wow fadeInUp" data-wow-delay=".5s"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- SERVICES SECTION END -->
+
+            <!-- start: Service Popup -->
+            {% for s, pop in servicepopups %}
+            <div id="service-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
+                <div class="popup_modal_img">
+                    <img src="{{ pop.modal_img.url }}" alt="">
+                </div>
+
+                <div class="popup_modal_content">
+                    <div class="service_details">
+                        <div class="row">
+                            <div class="col-lg-7 col-xl-8">
+                                <div class="service_details_content">
+                                    <div class="service_info">
+                                        <h6 class="subtitle">SERVICES</h6>
+                                        <h2 class="title">{{ pop.service_title }}</h2>
+                                        <div class="desc">
+                                            <p>{{ pop.description }}</p>
+                                        </div>
+
+                                        <h3 class="title">Services Process</h3>
+                                        <div class="desc">
+                                            <p>{{ pop.process_descr }}</p>
+                                        </div>
+                                        <ul>
+                                            {% for item in pop.list_property %}
+                                            <li>{{ item }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-5 col-xl-4">
+                                <div class="tj_main_sidebar">
+                                    <div class="sidebar_widget contact_form">
+                                        <div class="widget_title">
+                                            <h3 class="title">Get in Touch</h3>
+                                        </div>
+
+                                        <form id="contact-form" method="POST" action="{% url 'home' %}">
+                                            {% csrf_token %}
+                                            <div class="form_group">
+                                                {{serviceModal_form.first_name}}
+                                            </div>
+                                            <div class="form_group">
+                                                {{serviceModal_form.last_name}}
+                                            </div>
+                                            <div class="form_group">
+                                                {{serviceModal_form.email}}
+                                            </div>
+                                            <div class="form_group">
+                                                {{serviceModal_form.phone}}
+                                            </div>
+                                            <div class="form_group">
+                                                <input type="text" readonly name="service" class="form_group" value="{{ pop.service_title }}">
+                                            </div>
+                                            <div class="form_group">
+                                                {{serviceModal_form.message}}
+                                            </div>
+                                            <div class="form_btn">
+                                                <button class="btn tj-btn-primary" type="submit">Send Message</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
-        <!-- end: Service Popup -->
+            {% endfor %}
+            <!-- end: Service Popup -->
 
-        <!-- PORTFOLIO SECTION START -->
-        <section class="portfolio-section" id="works-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        {% for pH in porfolio_hero %}
-                        <div class="section-header text-center">
-                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{pH.title}}</h2>
-                            <p class=" wow fadeInUp" data-wow-delay=".4s">{{pH.description}}</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <form method="GET">
-                            <div class="portfolio-filter text-center wow fadeInUp" data-wow-delay=".5s">
-                                <div class="button-group filter-button-group">
-                                    <button type="submit" name="category" value="" class="category-button{% if not selected_category %} active{% endif %}">All</button>
-                                    {% for category in categories %}
-                                    <button type="submit" name="category" value="{{ category.name }}" class="category-button{% if selected_category == category.name %} active{% endif %}">{{ category.name }}</button>
-                                    {% endfor %}
-                                    <div class="active-bg"></div>
-                                </div>
+            <!-- PORTFOLIO SECTION START -->
+            <section class="portfolio-section" id="works-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for pH in porfolio_hero %}
+                            <div class="section-header text-center">
+                                <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{pH.title}}</h2>
+                                <p class=" wow fadeInUp" data-wow-delay=".4s">{{pH.description}}</p>
                             </div>
-                        </form>
-                        
-                        
-                        <div class="portfolio-box wow fadeInUp" data-wow-delay=".6s">
-                            <div class="portfolio-sizer"></div>
-                            <div class="gutter-sizer"></div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="GET">
+                                <div class="portfolio-filter text-center wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="button-group filter-button-group">
+                                        <button type="submit" name="category" value="" class="category-button{% if not selected_category %} active{% endif %}">All</button>
+                                        {% for category in categories %}
+                                        <button type="submit" name="category" value="{{ category.name }}" class="category-button{% if selected_category == category.name %} active{% endif %}">{{ category.name }}</button>
+                                        {% endfor %}
+                                        <div class="active-bg"></div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            
                             <div class="portfolio-box wow fadeInUp" data-wow-delay=".6s">
                                 <div class="portfolio-sizer"></div>
                                 <div class="gutter-sizer"></div>
-                                {% for item in portfolio_items %}
-                                <div class="portfolio-item {{ item.category }}">
-                                    <div class="image-box">
-                                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
-                                    </div>
-                                    <div class="content-box">
-                                        <h3 class="portfolio-title">{{ item.title }}</h3>
-                                        <p>{{ item.description }}</p>
-                                        <i class="flaticon-up-right-arrow"></i>
-                                        <button data-mfp-src="#portfolio-wrapper-{{ forloop.counter }}" class="portfolio-link modal-popup">
-                                            <a href="{% url 'portfolio_detail' item.pk %}"></a>
-                                        </button>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- PORTFOLIO SECTION END -->
-
-        <!-- start: Portfolio Popup -->
-        {% for item in portfolio_popups %}
-        <div id="portfolio-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
-            <div class="popup_modal_img">
-                <img src="{{ item.modal_img.url }}" alt="{{ item.title }}">
-            </div>
-
-            <div class="popup_modal_content">
-                <div class="portfolio_info">
-                    <div class="portfolio_info_text">
-                        <h2 class="title">{{ item.title }}</h2>
-                        <div class="desc">
-                            <p>{{ item.description }}</p>
-                        </div>
-                        <a href="{{ item.live_preview_link }}" class="btn tj-btn-primary">live preview <i class="fal fa-arrow-right"></i></a>
-                    </div>
-                    <div class="portfolio_info_items">
-                        <div class="info_item">
-                            <div class="key">Category</div>
-                            <div class="value">{{ item.category }}</div>
-                        </div>
-                        <div class="info_item">
-                            <div class="key">Client</div>
-                            <div class="value">{{ item.client }}</div>
-                        </div>
-                        <div class="info_item">
-                            <div class="key">Start Date</div>
-                            <div class="value">{{ item.start_date }}</div>
-                        </div>
-                        <div class="info_item">
-                            <div class="key">Designer</div>
-                            <div class="value">{{ item.designer }}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio_gallery owl-carousel">
-                    {% for image in item.images.all %} 
-                    <div class="gallery_item">
-                        <img src="{{image.image.url}}" alt="">
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div class="portfolio_description">
-                    <h2 class="title">Project Description</h2>
-                    <div class="desc">
-                        <p>{{ item.project_desc }}</p>
-                    </div>
-                </div>
-
-                <div class="portfolio_story_approach">
-                    <div class="portfolio_story">
-                        <div class="story_title">
-                            <h4 class="title">The story</h4>
-                        </div>
-                        <div class="story_content">
-                            <p>{{ item.story }}</p>
-                        </div>
-                    </div>
-                    <div class="portfolio_approach">
-                        <div class="approach_title">
-                            <h4 class="title">OUR APPROACH</h4>
-                        </div>
-                        <div class="approach_content">
-                            <p>{{ item.approach }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio_navigation">
-                    <div class="navigation_item prev-project">
-                        <a href="#" class="project">
-                            <i class="fal fa-arrow-left"></i>
-                            <div class="nav_project">
-                                <div class="label">Previous Project</div>
-                                <h3 class="title">{{ item.previous_project.title }}</h3>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="navigation_item next-project">
-                        <a href="#" class="project">
-                            <div class="nav_project">
-                                <div class="label">Next Project</div>
-                                <h3 class="title">{{ item.next_project.title }}</h3>
-                            </div>
-                            <i class="fal fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            
-            </div>
-        </div>
-        {% endfor %}
-        <!-- end: Portfolio Popup -->
-
-        <!-- RESUME SECTION START -->
-        <section class="resume-section" id="resume-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        {% for rh in resumeHero %}
-                        <div class="section-header wow fadeInUp" data-wow-delay=".3s">
-                            <h2 class="section-title"><i class="flaticon-recommendation"></i>{{rh.exp_title}}</h2>
-                        </div>
-                        {% endfor %}
-                        <div class="resume-widget">
-                            {% for ex in experience %}
-                            <div class="resume-item wow fadeInLeft" data-wow-delay="{{ forloop.counter0|calculate_delay_resume}}s">
-                                <div class="time">
-                                    {{ex.duration}}
-                                </div>
-                                <h3 class="resume-title">{{ex.role}}</h3>
-                                <div class="institute">
-                                    {{ex.company}}
-                                </div>
-                            </div>     
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        {% for rh in resumeHero %}
-                          
-                        <div class="section-header wow fadeInUp" data-wow-delay=".4s">
-                            <h2 class="section-title"><i class="flaticon-graduation-cap"></i>{{rh.edu_title}}</h2>
-                        </div>
-                        {% endfor %}
-                        <div class="resume-widget">
-                            {% for edu in education %}
-                            <div class="resume-item wow fadeInRight" data-wow-delay="{{ forloop.counter0|calculate_delay_resume }}s">
-                                <div class="time">
-                                    {{edu.duration}}
-                                </div>
-                                <h3 class="resume-title">{{edu.course_title}}</h3>
-                                <div class="institute">
-                                    {{edu.institute}}
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- RESUME SECTION END -->
-
-        <!-- SKILLS SECTION START -->
-        <section class="skills-section" id="skills-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        {% for skillsH in skillshero %}
-                            <div class="section-header text-center">
-                                <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{skillsH.title}}</h2>
-                                <p class=" wow fadeInUp" data-wow-delay=".4s">{{skillsH.description}}</p>
-                            </div>    
-                         {% endfor %}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="skills-widget d-flex flex-wrap justify-content-center align-items-center">
-                            {% for skill in skills %}
-                            <div class="skill-item wow fadeInUp" data-wow-delay="{{ forloop.counter0|skills}}s">
-                                <div class="skill-inner">
-                                    <div class="icon-box">
-                                        <img src="{{skill.skills_img.url}}" alt="">
-                                    </div>
-                                    <div class="number">{{skill.rating_percentage}}%</div>
-                                </div>
-                                <p>{{skill.skills_title}}</p>
-                            </div>     
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- SKILLS SECTION END -->
-
-        <!-- TESTIMONIAL SECTION START -->
-        <section class="testimonial-section" id="testimonials-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        {% for tH in testimonialhero %}
-                        <div class="section-header">
-                            <h2 class="section-title wow fadeInLeft" data-wow-delay=".3s">{{tH.title}}</h2>
-                            <p class=" wow fadeInLeft" data-wow-delay=".4s">{{tH.desc}}</p>
-                            </div>
-                            {% endfor %}
-                    </div>
-
-                    <div class="col-lg-7 col-xl-6 offset-xl-1">
-                        <div class="testimonials-widget wow fadeInRight" data-wow-delay=".5s">
-                            <div class="owl-carousel testimonial-carousel">
-                                {% for testimonial in testimonials %}
-                                <div class="testimonial-item">
-                                    <div class="top-area d-flex flex-wrap justify-content-between">
-                                        <div class="logo-box">
-                                            <img src="{{testimonial.com_image.url}}" alt="">
-                                        </div>
+                                <div class="portfolio-box wow fadeInUp" data-wow-delay=".6s">
+                                    <div class="portfolio-sizer"></div>
+                                    <div class="gutter-sizer"></div>
+                                    {% for item in portfolio_items %}
+                                    <div class="portfolio-item {{ item.category }}">
                                         <div class="image-box">
-                                            <img src="{{testimonial.image.url}}" alt="">
+                                            <img src="{{ item.image.url }}" alt="{{ item.title }}">
                                         </div>
-                                    </div> 
-                                    <div class="icon-box">
-                                        <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0.105431 2.18998C0.0301532 0.988687 1.02531 -0.00647222 2.2266 0.0688056L19.4961 1.15097C21.2148 1.25867 22.0029 3.34358 20.7852 4.56127L4.5979 20.7486C3.3802 21.9663 1.2953 21.1781 1.1876 19.4594L0.105431 2.18998Z" fill="url(#paint0_linear_263_588)"></path>
-                                            <defs>
-                                                <lineargradient id="paint0_linear_263_588" x1="-0.0363755" y1="-0.0729998" x2="35.3333" y2="-0.0729991" gradientunits="userSpaceOnUse">
-                                                    <stop offset="1" stop-color="var(--tj-theme-primary)"></stop>
-                                                    <stop offset="1" stop-color="#140C1C" stop-opacity="0"></stop>
-                                                </lineargradient>
-                                            </defs>
-                                        </svg>
-                                        <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0.105431 2.18998C0.0301532 0.988687 1.02531 -0.00647222 2.2266 0.0688056L19.4961 1.15097C21.2148 1.25867 22.0029 3.34358 20.7852 4.56127L4.5979 20.7486C3.3802 21.9663 1.2953 21.1781 1.1876 19.4594L0.105431 2.18998Z" fill="url(#paint0_linear_263_589)"></path>
-                                            <defs>
-                                                <lineargradient id="paint0_linear_263_589" x1="-0.0363755" y1="-0.0729998" x2="35.3333" y2="-0.0729991" gradientunits="userSpaceOnUse">
-                                                    <stop offset="1" stop-color="var(--tj-theme-primary)"></stop>
-                                                    <stop offset="1" stop-color="#140C1C" stop-opacity="0"></stop>
-                                                </lineargradient>
-                                            </defs>
-                                        </svg> 
+                                        <div class="content-box">
+                                            <h3 class="portfolio-title">{{ item.title }}</h3>
+                                            <p>{{ item.description }}</p>
+                                            <i class="flaticon-up-right-arrow"></i>
+                                            <button data-mfp-src="#portfolio-wrapper-{{ forloop.counter }}" class="portfolio-link modal-popup">
+                                                <a href="{% url 'portfolio_detail' item.pk %}"></a>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <p class="quote">{{testimonial.quote}}</p>
-                                    <h4 class="name">{{testimonial.name}}</h4>
-                                    <span class="designation">{{testimonial.role}}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- PORTFOLIO SECTION END -->
+
+            <!-- start: Portfolio Popup -->
+            {% for item in portfolio_popups %}
+            <div id="portfolio-wrapper-{{ forloop.counter }}" class="popup_content_area zoom-anim-dialog mfp-hide">
+                <div class="popup_modal_img">
+                    <img src="{{ item.modal_img.url }}" alt="{{ item.title }}">
+                </div>
+
+                <div class="popup_modal_content">
+                    <div class="portfolio_info">
+                        <div class="portfolio_info_text">
+                            <h2 class="title">{{ item.title }}</h2>
+                            <div class="desc">
+                                <p>{{ item.description }}</p>
+                            </div>
+                            <a href="{{ item.live_preview_link }}" class="btn tj-btn-primary">live preview <i class="fal fa-arrow-right"></i></a>
+                        </div>
+                        <div class="portfolio_info_items">
+                            <div class="info_item">
+                                <div class="key">Category</div>
+                                <div class="value">{{ item.category }}</div>
+                            </div>
+                            <div class="info_item">
+                                <div class="key">Client</div>
+                                <div class="value">{{ item.client }}</div>
+                            </div>
+                            <div class="info_item">
+                                <div class="key">Start Date</div>
+                                <div class="value">{{ item.start_date }}</div>
+                            </div>
+                            <div class="info_item">
+                                <div class="key">Designer</div>
+                                <div class="value">{{ item.designer }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio_gallery owl-carousel">
+                        {% for image in item.images.all %} 
+                        <div class="gallery_item">
+                            <img src="{{image.image.url}}" alt="">
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="portfolio_description">
+                        <h2 class="title">Project Description</h2>
+                        <div class="desc">
+                            <p>{{ item.project_desc }}</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio_story_approach">
+                        <div class="portfolio_story">
+                            <div class="story_title">
+                                <h4 class="title">The story</h4>
+                            </div>
+                            <div class="story_content">
+                                <p>{{ item.story }}</p>
+                            </div>
+                        </div>
+                        <div class="portfolio_approach">
+                            <div class="approach_title">
+                                <h4 class="title">OUR APPROACH</h4>
+                            </div>
+                            <div class="approach_content">
+                                <p>{{ item.approach }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio_navigation">
+                        <div class="navigation_item prev-project">
+                            <a href="#" class="project">
+                                <i class="fal fa-arrow-left"></i>
+                                <div class="nav_project">
+                                    <div class="label">Previous Project</div>
+                                    <h3 class="title">{{ item.previous_project.title }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="navigation_item next-project">
+                            <a href="#" class="project">
+                                <div class="nav_project">
+                                    <div class="label">Next Project</div>
+                                    <h3 class="title">{{ item.next_project.title }}</h3>
+                                </div>
+                                <i class="fal fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            {% endfor %}
+            <!-- end: Portfolio Popup -->
+
+            <!-- RESUME SECTION START -->
+            <section class="resume-section" id="resume-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% for rh in resumeHero %}
+                            <div class="section-header wow fadeInUp" data-wow-delay=".3s">
+                                <h2 class="section-title"><i class="flaticon-recommendation"></i>{{rh.exp_title}}</h2>
+                            </div>
+                            {% endfor %}
+                            <div class="resume-widget">
+                                {% for ex in experience %}
+                                <div class="resume-item wow fadeInLeft" data-wow-delay="{{ forloop.counter0|calculate_delay_resume}}s">
+                                    <div class="time">
+                                        {{ex.duration}}
+                                    </div>
+                                    <h3 class="resume-title">{{ex.role}}</h3>
+                                    <div class="institute">
+                                        {{ex.company}}
+                                    </div>
+                                </div>     
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            {% for rh in resumeHero %}
+                            
+                            <div class="section-header wow fadeInUp" data-wow-delay=".4s">
+                                <h2 class="section-title"><i class="flaticon-graduation-cap"></i>{{rh.edu_title}}</h2>
+                            </div>
+                            {% endfor %}
+                            <div class="resume-widget">
+                                {% for edu in education %}
+                                <div class="resume-item wow fadeInRight" data-wow-delay="{{ forloop.counter0|calculate_delay_resume }}s">
+                                    <div class="time">
+                                        {{edu.duration}}
+                                    </div>
+                                    <h3 class="resume-title">{{edu.course_title}}</h3>
+                                    <div class="institute">
+                                        {{edu.institute}}
+                                    </div>
                                 </div>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- TESTIMONIAL SECTION END -->
+            </section>
+            <!-- RESUME SECTION END -->
 
-        <!-- BLOG SECTION STAR -->
-        <!-- <section class="blog-section" id="blog-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-header text-center">
-                            <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">Recent Blogs</h2>
-                            <p class=" wow fadeInUp" data-wow-delay=".4s">We put your ideas and thus your wishes in the
-                                form of a unique web project that inspires
-                                you
-                                and you customers.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay=".5s">
-                            <div class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{% static 'assets/img/blog/1.jpg' %}" alt="">
-                                </a>
-                                <a href="#" class="category">Tutorial</a>
-                            </div>
-
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="ul-reset">
-                                        <li><i class="fa-light fa-calendar-days"></i> Oct 01, 2022</li>
-                                        <li><i class="fa-light fa-comments"></i> <a href="#">Comment (0)</a></li>
-                                    </ul>
-                                </div>
-                                <h3 class="blog-title"><a href="blog-details.html">top 10 ui ux designers</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay=".6s">
-                            <div class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{% static 'assets/img/blog/2.jpg' %}" alt="">
-                                </a>
-                                <a href="#" class="category">TIPS</a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="ul-reset">
-                                        <li><i class="fa-light fa-calendar-days"></i> Nov 01, 2022</li>
-                                        <li><i class="fa-light fa-comments"></i> <a href="#">Comment (0)</a></li>
-                                    </ul>
-                                </div>
-                                <h3 class="blog-title"><a href="blog-details.html">App Development Guides</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay=".7s">
-                            <div class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{% static 'assets/img/blog/3.jpg' %}" alt="">
-                                </a>
-                                <a href="#" class="category">FREEBIES</a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="ul-reset">
-                                        <li><i class="fa-light fa-calendar-days"></i> Dec 01, 2022</li>
-                                        <li><i class="fa-light fa-comments"></i> <a href="#">Comment (0)</a></li>
-                                    </ul>
-                                </div>
-                                <h3 class="blog-title"><a href="blog-details.html">learn graphic design free</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- BLOG SECTION END -->
-
-        <!-- CONTACT SECTION START -->
-        <section class="contact-section" id="contact-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7 order-2 order-md-1">
-                        <div class="contact-form-box wow fadeInLeft" data-wow-delay=".3s">
-                            <div class="section-header">
-                                {% for cH in contacthero %}
-                                <h2 class="section-title">{{cH.title}}</h2>
-                                <p>{{cH.desc}}</p>
-                                {% endfor %}
-                            </div>
-                            <div class="tj-contact-form">
-                                
-                                <form id="contact-form" method="POST" action="{% url 'home' %}">
-                                    {% csrf_token %}
-                                    <div class="row gx-3">
-                                        <div class="col-sm-6">
-                                            <div class="form_group">
-                                                {{form.first_name}}
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form_group">
-                                               {{form.last_name}}
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form_group">
-                                                {{form.email}}
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form_group">
-                                               {{form.phone}}
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form_group">
-                                              {{form.service}}
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form_group">
-                                                {{form.message}}
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form_btn">
-                                                <button type="submit" class="btn tj-btn-primary" data-bs-toggle="modal" >Send Message</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>      
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-5 offset-lg-1 col-md-5  d-flex flex-wrap align-items-center  order-1 order-md-2">
-                        <div class="contact-info-list">
-                            {% for cH in contacthero %}
-                            <ul class="ul-reset">
-                                <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".4s">
-                                    <div class="icon-box">
-                                        <i class="flaticon-phone-call"></i>
-                                    </div>
-                                    <div class="text-box">
-                                        <p>Phone</p>
-                                        <a href="tel:0123456789">{{cH.phone}}</a>
-                                    </div>
-                                </li>
-                                <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".5s">
-                                    <div class="icon-box">
-                                        <i class="flaticon-mail-inbox-app"></i>
-                                    </div>
-                                    <div class="text-box">
-                                        <p>Email</p>
-                                        <a href="mailto:mohammedaalli088@gmail.com">{{cH.email}}</a>
-                                    </div>
-                                </li>
-                                <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".6s">
-                                    <div class="icon-box">
-                                        <i class="flaticon-location"></i>
-                                    </div>
-                                    <div class="text-box">
-                                        <p>Address</p>
-                                        <a href="#">{{cH.address}}</a>
-                                    </div>
-                                </li>
-                            </ul>                            
+            <!-- SKILLS SECTION START -->
+            <section class="skills-section" id="skills-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for skillsH in skillshero %}
+                                <div class="section-header text-center">
+                                    <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">{{skillsH.title}}</h2>
+                                    <p class=" wow fadeInUp" data-wow-delay=".4s">{{skillsH.description}}</p>
+                                </div>    
                             {% endfor %}
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- CONTACT SECTION END -->
-       
-        <!-- BEGIN: Contact Form Success Modal Message -->
-        <div class="modal contact_modal" id="message_sent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="modal-title"><strong>Message Sent Successfully</strong></span>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Thank you for contacting us. We will get back to you shortly.<br>Have a great day!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: Contact Form Success Modal Message -->
 
-        <!-- BEGIN: Contact Form Fail Modal Message -->
-       <div class="modal contact_modal failed" id="message_fail" tabindex="-1" >
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="modal-title"><strong>Error</strong></span>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Oops! Something went wrong, please try again.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="skills-widget d-flex flex-wrap justify-content-center align-items-center">
+                                {% for skill in skills %}
+                                <div class="skill-item wow fadeInUp" data-wow-delay="{{ forloop.counter0|skills}}s">
+                                    <div class="skill-inner">
+                                        <div class="icon-box">
+                                            <img src="{{skill.skills_img.url}}" alt="">
+                                        </div>
+                                        <div class="number">{{skill.rating_percentage}}%</div>
+                                    </div>
+                                    <p>{{skill.skills_title}}</p>
+                                </div>     
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div> 
-        <!-- END: Contact Form Fail Modal Message End -->  
-    </main>
+            </section>
+            <!-- SKILLS SECTION END -->
 
-    <!-- FOOTER AREA START -->
-    <footer class="tj-footer-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    {% for hero in heroes %}
-                    <div class="footer-logo-box">
-                        <a href="#"><img src="{{hero.logo.url}}" alt=""></a>
-                    </div>                     
-                    {% endfor %}
-                    <div class="footer-menu">
-                        <nav>
-                            <ul>
-                                <li><a href="#services-section">Services</a></li>
-                                <li><a href="#works-section">Works</a></li>
-                                <li><a href="#resume-section">Resume</a></li>
-                                <li><a href="#skills-section">Skills</a></li>
-                                <li><a href="#testimonials-section">Testimonials</a></li>
-                                <li><a href="#contact-section">Contact</a></li>
-                            </ul>
-                        </nav>
+            <!-- TESTIMONIAL SECTION START -->
+            <section class="testimonial-section" id="testimonials-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            {% for tH in testimonialhero %}
+                            <div class="section-header">
+                                <h2 class="section-title wow fadeInLeft" data-wow-delay=".3s">{{tH.title}}</h2>
+                                <p class=" wow fadeInLeft" data-wow-delay=".4s">{{tH.desc}}</p>
+                                </div>
+                                {% endfor %}
+                        </div>
+
+                        <div class="col-lg-7 col-xl-6 offset-xl-1">
+                            <div class="testimonials-widget wow fadeInRight" data-wow-delay=".5s">
+                                <div class="owl-carousel testimonial-carousel">
+                                    {% for testimonial in testimonials %}
+                                    <div class="testimonial-item">
+                                        <div class="top-area d-flex flex-wrap justify-content-between">
+                                            <div class="logo-box">
+                                                <img src="{{testimonial.com_image.url}}" alt="">
+                                            </div>
+                                            <div class="image-box">
+                                                <img src="{{testimonial.image.url}}" alt="">
+                                            </div>
+                                        </div> 
+                                        <div class="icon-box">
+                                            <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.105431 2.18998C0.0301532 0.988687 1.02531 -0.00647222 2.2266 0.0688056L19.4961 1.15097C21.2148 1.25867 22.0029 3.34358 20.7852 4.56127L4.5979 20.7486C3.3802 21.9663 1.2953 21.1781 1.1876 19.4594L0.105431 2.18998Z" fill="url(#paint0_linear_263_588)"></path>
+                                                <defs>
+                                                    <lineargradient id="paint0_linear_263_588" x1="-0.0363755" y1="-0.0729998" x2="35.3333" y2="-0.0729991" gradientunits="userSpaceOnUse">
+                                                        <stop offset="1" stop-color="var(--tj-theme-primary)"></stop>
+                                                        <stop offset="1" stop-color="#140C1C" stop-opacity="0"></stop>
+                                                    </lineargradient>
+                                                </defs>
+                                            </svg>
+                                            <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.105431 2.18998C0.0301532 0.988687 1.02531 -0.00647222 2.2266 0.0688056L19.4961 1.15097C21.2148 1.25867 22.0029 3.34358 20.7852 4.56127L4.5979 20.7486C3.3802 21.9663 1.2953 21.1781 1.1876 19.4594L0.105431 2.18998Z" fill="url(#paint0_linear_263_589)"></path>
+                                                <defs>
+                                                    <lineargradient id="paint0_linear_263_589" x1="-0.0363755" y1="-0.0729998" x2="35.3333" y2="-0.0729991" gradientunits="userSpaceOnUse">
+                                                        <stop offset="1" stop-color="var(--tj-theme-primary)"></stop>
+                                                        <stop offset="1" stop-color="#140C1C" stop-opacity="0"></stop>
+                                                    </lineargradient>
+                                                </defs>
+                                            </svg> 
+                                        </div>
+                                        <p class="quote">{{testimonial.quote}}</p>
+                                        <h4 class="name">{{testimonial.name}}</h4>
+                                        <span class="designation">{{testimonial.role}}</span>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="copy-text">
-                        <p>&copy; 2024 All rights reserved by <a href="#" target="_blank">Pundit4Real</a></p>
+                </div>
+            </section>
+            <!-- TESTIMONIAL SECTION END -->
+
+            <!-- BLOG SECTION STAR -->
+            <!-- <section class="blog-section" id="blog-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-header text-center">
+                                <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">Recent Blogs</h2>
+                                <p class=" wow fadeInUp" data-wow-delay=".4s">We put your ideas and thus your wishes in the
+                                    form of a unique web project that inspires
+                                    you
+                                    and you customers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item wow fadeInUp" data-wow-delay=".5s">
+                                <div class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{% static 'assets/img/blog/1.jpg' %}" alt="">
+                                    </a>
+                                    <a href="#" class="category">Tutorial</a>
+                                </div>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <ul class="ul-reset">
+                                            <li><i class="fa-light fa-calendar-days"></i> Oct 01, 2022</li>
+                                            <li><i class="fa-light fa-comments"></i> <a href="#">Comment (0)</a></li>
+                                        </ul>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">top 10 ui ux designers</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item wow fadeInUp" data-wow-delay=".6s">
+                                <div class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{% static 'assets/img/blog/2.jpg' %}" alt="">
+                                    </a>
+                                    <a href="#" class="category">TIPS</a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <ul class="ul-reset">
+                                            <li><i class="fa-light fa-calendar-days"></i> Nov 01, 2022</li>
+                                            <li><i class="fa-light fa-comments"></i> <a href="#">Comment (0)</a></li>
+                                        </ul>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">App Development Guides</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item wow fadeInUp" data-wow-delay=".7s">
+                                <div class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{% static 'assets/img/blog/3.jpg' %}" alt="">
+                                    </a>
+                                    <a href="#" class="category">FREEBIES</a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <ul class="ul-reset">
+                                            <li><i class="fa-light fa-calendar-days"></i> Dec 01, 2022</li>
+                                            <li><i class="fa-light fa-comments"></i> <a href="#">Comment (0)</a></li>
+                                        </ul>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">learn graphic design free</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- BLOG SECTION END -->
+
+            <!-- CONTACT SECTION START -->
+            <section class="contact-section" id="contact-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-7 order-2 order-md-1">
+                            <div class="contact-form-box wow fadeInLeft" data-wow-delay=".3s">
+                                <div class="section-header">
+                                    {% for cH in contacthero %}
+                                    <h2 class="section-title">{{cH.title}}</h2>
+                                    <p>{{cH.desc}}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="tj-contact-form">
+                                    
+                                    <form id="contact-form" method="POST" action="{% url 'home' %}">
+                                        {% csrf_token %}
+                                        <div class="row gx-3">
+                                            <div class="col-sm-6">
+                                                <div class="form_group">
+                                                    {{form.first_name}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form_group">
+                                                {{form.last_name}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form_group">
+                                                    {{form.email}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form_group">
+                                                {{form.phone}}
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form_group">
+                                                {{form.service}}
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form_group">
+                                                    {{form.message}}
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form_btn">
+                                                    <button type="submit" class="btn tj-btn-primary" data-bs-toggle="modal" >Send Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>      
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 offset-lg-1 col-md-5  d-flex flex-wrap align-items-center  order-1 order-md-2">
+                            <div class="contact-info-list">
+                                {% for cH in contacthero %}
+                                <ul class="ul-reset">
+                                    <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".4s">
+                                        <div class="icon-box">
+                                            <i class="flaticon-phone-call"></i>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Phone</p>
+                                            <a href="tel:0123456789">{{cH.phone}}</a>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".5s">
+                                        <div class="icon-box">
+                                            <i class="flaticon-mail-inbox-app"></i>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Email</p>
+                                            <a href="mailto:mohammedaalli088@gmail.com">{{cH.email}}</a>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight" data-wow-delay=".6s">
+                                        <div class="icon-box">
+                                            <i class="flaticon-location"></i>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Address</p>
+                                            <a href="#">{{cH.address}}</a>
+                                        </div>
+                                    </li>
+                                </ul>                            
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CONTACT SECTION END -->
+        
+            <!-- BEGIN: Contact Form Success Modal Message -->
+            <div class="modal contact_modal" id="message_sent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="modal-title"><strong>Message Sent Successfully</strong></span>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thank you for contacting us. We will get back to you shortly.<br>Have a great day!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- FOOTER AREA END -->
+            <!-- END: Contact Form Success Modal Message -->
+
+            <!-- BEGIN: Contact Form Fail Modal Message -->
+        <div class="modal contact_modal failed" id="message_fail" tabindex="-1" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="modal-title"><strong>Error</strong></span>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Oops! Something went wrong, please try again.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- END: Contact Form Fail Modal Message End -->  
+        </main>
+
+        <!-- FOOTER AREA START -->
+        <footer class="tj-footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        {% for hero in heroes %}
+                        <div class="footer-logo-box">
+                            <a href="#"><img src="{{hero.logo.url}}" alt=""></a>
+                        </div>                     
+                        {% endfor %}
+                        <div class="footer-menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="#services-section">Services</a></li>
+                                    <li><a href="#works-section">Works</a></li>
+                                    <li><a href="#resume-section">Resume</a></li>
+                                    <li><a href="#skills-section">Skills</a></li>
+                                    <li><a href="#testimonials-section">Testimonials</a></li>
+                                    <li><a href="#contact-section">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="copy-text">
+                            <p>&copy; 2024 All rights reserved by <a href="#" target="_blank">Pundit4Real</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER AREA END -->
 
 
-    <!-- CSS here -->
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/nice-select.min.js' %}"></script>
-    <script src="{% static 'assets/js/backToTop.js' %}"></script>
-    <script src="{% static 'assets/js/smooth-scroll.js' %}"></script>
-    <script src="{% static 'assets/js/appear.min.js' %}"></script>
-    <script src="{% static 'assets/js/wow.min.js' %}"></script>
-    <script src="{% static 'assets/js/gsap.min.js' %}"></script>
-    <script src="{% static 'assets/js/one-page-nav.js' %}"></script>
-    <script src="{% static 'assets/js/lightcase.js' %}"></script>
-    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
-    <script src="{% static 'assets/js/odometer.min.js' %}"></script>
-    <script src="{% static 'assets/js/magnific-popup.js' %}"></script>
-    <script src="{% static 'assets/js/validate.min.js' %}"></script>
+        <!-- CSS here -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/nice-select.min.js' %}"></script>
+        <script src="{% static 'assets/js/backToTop.js' %}"></script>
+        <script src="{% static 'assets/js/smooth-scroll.js' %}"></script>
+        <script src="{% static 'assets/js/appear.min.js' %}"></script>
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>
+        <script src="{% static 'assets/js/gsap.min.js' %}"></script>
+        <script src="{% static 'assets/js/one-page-nav.js' %}"></script>
+        <script src="{% static 'assets/js/lightcase.js' %}"></script>
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'assets/js/odometer.min.js' %}"></script>
+        <script src="{% static 'assets/js/magnific-popup.js' %}"></script>
+        <script src="{% static 'assets/js/validate.min.js' %}"></script>
 
 
-    <script src="{% static 'assets/js/main.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
 
-    <script>
-        $(document).ready(function() {
-            // When a category button is clicked
-            $('.category-button').click(function() {
-                // Remove the 'active' class from all category buttons
-                $('.category-button').removeClass('active');
-                // Add the 'active' class to the clicked category button
-                $(this).addClass('active');
-                
-                // Get the data-filter value of the clicked category button
-                var filterValue = $(this).attr('data-filter');
+        <script>
+            $(document).ready(function() {
+                // When a category button is clicked
+                $('.category-button').click(function() {
+                    // Remove the 'active' class from all category buttons
+                    $('.category-button').removeClass('active');
+                    // Add the 'active' class to the clicked category button
+                    $(this).addClass('active');
+                    
+                    // Get the data-filter value of the clicked category button
+                    var filterValue = $(this).attr('data-filter');
 
-                // Hide all portfolio items
-                $('.portfolio-item').hide();
+                    // Hide all portfolio items
+                    $('.portfolio-item').hide();
 
-                // If 'All' is selected, show all portfolio items
-                if (filterValue === '?categories=') {
-                    $('.portfolio-item').show();
-                } else {
-                    // Otherwise, show only portfolio items that match the selected category
-                    $(filterValue).show();
-                }
+                    // If 'All' is selected, show all portfolio items
+                    if (filterValue === '?categories=') {
+                        $('.portfolio-item').show();
+                    } else {
+                        // Otherwise, show only portfolio items that match the selected category
+                        $(filterValue).show();
+                    }
+                });
             });
-        });
-    </script>
+        </script>
 
-    
+        
 
 
 </body>
