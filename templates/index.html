@@ -414,7 +414,29 @@
                                 <p>{{ item.description }}</p>
                             </div>
                             <a href="{{ item.live_preview_link }}" class="btn tj-btn-primary">live preview <i class="fal fa-arrow-right"></i></a>
+                            <a href="#" class="btn tj-btn-primary" data-toggle="modal" data-target="#videoModal" onclick="playVideo('{{ item.short_video.url }}')">Short Video <i class="fal fa-arrow-right"></i></a>
+                            <a href="{{ item.apk_file.url}}" download class="btn tj-btn-secondary">Download Todomaster apk now!<i class="flaticon-download"></i></a>
                         </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="videoModalLabel">Video Player</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <video id="modalVideo" width="100%" controls>
+                                    <source src="" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+  
                         <div class="portfolio_info_items">
                             <div class="info_item">
                                 <div class="key">Category</div>
@@ -767,7 +789,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form_btn">
-                                                    <button type="submit" class="btn tj-btn-primary" data-bs-toggle="modal" >Send Message</button>
+                                                    <button type="submit" class="btn tj-btn-primary" data-bs-toggle="modal">Send Message</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -816,7 +838,7 @@
             </section>
             <!-- CONTACT SECTION END -->
         
-            <!-- BEGIN: Contact Form Success Modal Message -->
+                    <!-- BEGIN: Contact Form Success Modal Message -->
             <div class="modal contact_modal" id="message_sent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -836,7 +858,7 @@
             <!-- END: Contact Form Success Modal Message -->
 
             <!-- BEGIN: Contact Form Fail Modal Message -->
-        <div class="modal contact_modal failed" id="message_fail" tabindex="-1" >
+            <div class="modal contact_modal failed" id="message_fail" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -851,8 +873,10 @@
                         </div>
                     </div>
                 </div>
-            </div> 
-            <!-- END: Contact Form Fail Modal Message End -->  
+            </div>
+            <!-- END: Contact Form Fail Modal Message -->
+
+
         </main>
 
         <!-- FOOTER AREA START -->
@@ -888,53 +912,71 @@
 
 
         <!-- CSS here -->
-        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'assets/js/nice-select.min.js' %}"></script>
-        <script src="{% static 'assets/js/backToTop.js' %}"></script>
-        <script src="{% static 'assets/js/smooth-scroll.js' %}"></script>
-        <script src="{% static 'assets/js/appear.min.js' %}"></script>
-        <script src="{% static 'assets/js/wow.min.js' %}"></script>
-        <script src="{% static 'assets/js/gsap.min.js' %}"></script>
-        <script src="{% static 'assets/js/one-page-nav.js' %}"></script>
-        <script src="{% static 'assets/js/lightcase.js' %}"></script>
-        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-        <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
-        <script src="{% static 'assets/js/odometer.min.js' %}"></script>
-        <script src="{% static 'assets/js/magnific-popup.js' %}"></script>
-        <script src="{% static 'assets/js/validate.min.js' %}"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <script src="{% static 'assets/js/main.js' %}"></script>
+<!-- Local JavaScript files -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/nice-select.min.js' %}"></script>
+<script src="{% static 'assets/js/backToTop.js' %}"></script>
+<script src="{% static 'assets/js/smooth-scroll.js' %}"></script>
+<script src="{% static 'assets/js/appear.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/gsap.min.js' %}"></script>
+<script src="{% static 'assets/js/one-page-nav.js' %}"></script>
+<script src="{% static 'assets/js/lightcase.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/js/odometer.min.js' %}"></script>
+<script src="{% static 'assets/js/magnific-popup.js' %}"></script>
+<script src="{% static 'assets/js/validate.min.js' %}"></script>
 
-        <script>
-            $(document).ready(function() {
-                // When a category button is clicked
-                $('.category-button').click(function() {
-                    // Remove the 'active' class from all category buttons
-                    $('.category-button').removeClass('active');
-                    // Add the 'active' class to the clicked category button
-                    $(this).addClass('active');
-                    
-                    // Get the data-filter value of the clicked category button
-                    var filterValue = $(this).attr('data-filter');
+<script src="{% static 'assets/js/main.js' %}"></script>
 
-                    // Hide all portfolio items
-                    $('.portfolio-item').hide();
+<script>
+    function playVideo(videoUrl) {
+        var video = document.getElementById('modalVideo');
+        video.src = videoUrl;
+        video.load();
+        video.play();
+    }
 
-                    // If 'All' is selected, show all portfolio items
-                    if (filterValue === '?categories=') {
-                        $('.portfolio-item').show();
-                    } else {
-                        // Otherwise, show only portfolio items that match the selected category
-                        $(filterValue).show();
-                    }
-                });
-            });
-        </script>
+    // Ensure the video stops when the modal is closed
+    $('#videoModal').on('hide.bs.modal', function () {
+        var video = document.getElementById('modalVideo');
+        video.pause();
+        video.src = "";
+    });
 
-        
+    $(document).ready(function() {
+        // When a category button is clicked
+        $('.category-button').click(function() {
+            // Remove the 'active' class from all category buttons
+            $('.category-button').removeClass('active');
+            // Add the 'active' class to the clicked category button
+            $(this).addClass('active');
 
+            // Get the data-filter value of the clicked category button
+            var filterValue = $(this).attr('data-filter');
+
+            // Hide all portfolio items
+            $('.portfolio-item').hide();
+
+            // If 'All' is selected, show all portfolio items
+            if (filterValue === '?categories=') {
+                $('.portfolio-item').show();
+            } else {
+                // Otherwise, show only portfolio items that match the selected category
+                $(filterValue).show();
+            }
+        });
+    });
+</script>
 
 </body>
 

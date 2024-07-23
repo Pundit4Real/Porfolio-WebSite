@@ -36,6 +36,8 @@ class PortfolioPopup(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     live_preview_link = models.URLField()
+    short_video = models.FileField(upload_to='videos/',blank=True,null=True)
+    apk_file = models.FileField(upload_to='apk', blank=True,null=True)
     category = models.CharField(max_length=50)
     start_date = models.DateField()
     client = models.CharField(max_length=100)

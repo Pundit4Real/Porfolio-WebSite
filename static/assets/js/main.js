@@ -358,40 +358,48 @@ Description: Gerold - Personal Portfolio HTML5 Template
 		}
 
 		// Form Validation
-		/* contact form */
-		if ($("#contact-form").length > 0) {
-			$("#contact-form").validate({
-				rules: {
-					conName: "required",
-					conEmail: {
-						required: true,
-						email: true,
-					},
-				},
+// Form Validation
+if ($("#contact-form").length > 0) {
+    $("#contact-form").validate({
+        rules: {
+            conName: "required",
+            conEmail: {
+                required: true,
+                email: true,
+            },
+        },
+        messages: {
+            conName: "Enter your name.",
+            conEmail: "Enter a valid email.",
+        },
+        submitHandler: function (form) {
+            // start ajax request
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: $("#contact-form").serialize(),
+                cache: false,
+                success: function (data) {
+                    console.log("Response from server:", data); // Debugging log
+                    if (data.success) {
+                        console.log("Showing success modal");
+                        $("#message_sent").modal("show");
+                        $("#contact-form").trigger("reset");
+                    } else {
+                        console.log("Showing failure modal");
+                        $("#message_fail").modal("show");
+                    }
+                },
+                error: function () {
+                    console.log("Error occurred, showing failure modal");
+                    $("#message_fail").modal("show");
+                }
+            });
+        },
+    });
+}
 
-				messages: {
-					conName: "Enter your name.",
-					conEmail: "Enter a valid email.",
-				},
-				submitHandler: function (form) {
-					// start ajax request
-					$.ajax({
-						type: "POST",
-						url: "",
-						data: $("#contact-form").serialize(),
-						cache: false,
-						success: function (data) {
-							if (data.success) {
-								$("#message_sent").modal("show");
-								$("#contact-form").trigger("reset");
-							} else {
-								$("#message_fail").modal("show");
-							}
-						},
-					});
-				},
-			});
-		}
+
 		/* !contact form */
 	});
 })(jQuery);

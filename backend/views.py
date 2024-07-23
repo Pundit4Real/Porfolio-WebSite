@@ -12,7 +12,7 @@ from .utils import EmailSender
 
 def home(request):
     contacthero = ContactUsHero.objects.all()
-    form = ContactUsForm(request.POST)
+    form = ContactUsForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
@@ -20,14 +20,10 @@ def home(request):
             email_sender = EmailSender()
             email_sender.send_client_email(form.instance)
             success_flag = True
-            print("Success Flag:", success_flag)
 
             return JsonResponse({'success': True})
         else:
             return JsonResponse({'success': False})  
-
-    else:
-        form = ContactUsForm()
 
     heroes = Hero.objects.all()
     service_heroes = ServiceHero.objects.all()
@@ -53,7 +49,7 @@ def home(request):
             portfolio_items = PortfolioItem.objects.filter(category__name=selected_category)
     else:
         portfolio_items = PortfolioItem.objects.all()
-#context 
+
     context = {
         'heroes': heroes,
         'service_heroes': service_heroes,
@@ -64,18 +60,19 @@ def home(request):
         'portfolio_popups': portfolio_popups,
         'categories': categories,
         'selected_category': selected_category,
-        'resumeHero':resumeHero,
-        'education':education,
-        'experience':experience,
-        'skillshero':skillshero,
-        'skills':skills,
-        'testimonialhero':testimonialhero,
-        'testimonials':testimonials,
+        'resumeHero': resumeHero,
+        'education': education,
+        'experience': experience,
+        'skillshero': skillshero,
+        'skills': skills,
+        'testimonialhero': testimonialhero,
+        'testimonials': testimonials,
         'form': form,
-        'contacthero':contacthero,
+        'contacthero': contacthero,
         'success_flag': success_flag if 'success_flag' in locals() else False,
-
     }
 
     return render(request, 'index.html', context)
 
+
+# $('#message_sent').modal('show');
