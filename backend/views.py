@@ -36,7 +36,7 @@ def home(request):
     education = Education.objects.all().order_by('-id')
     experience = Experience.objects.all().order_by('-id')
     skillshero = SkillsHero.objects.all()
-    skills = Skills.objects.all()
+    skills = Skills.objects.all().order_by('-id')
     testimonialhero = TestimonialHero.objects.all()
     testimonials = Testimonial.objects.all().order_by('-id')
 
