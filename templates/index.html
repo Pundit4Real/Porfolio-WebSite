@@ -417,13 +417,13 @@
                             {% if item.short_video %}
                                 <a href="#" class="btn tj-btn-primary" data-toggle="modal" data-target="#videoModal" onclick="playVideo('{{ item.short_video.url }}')">Short Video <i class="fal fa-arrow-right"></i></a>
                             {% else %}
-                                <p>No short video available</p>
+                                <!-- <p>No short video available</p> -->
                             {% endif %}
 
                             {% if item.apk_file %}
                                 <a href="{{ item.apk_file.url }}" download class="btn tj-btn-secondary">Download Todomaster apk now!<i class="flaticon-download"></i></a>
                             {% else %}
-                                <p>No APK file available</p>
+                                <!-- <p>No APK file available</p> -->
                             {% endif %}
                         </div>
                         <!-- Modal -->
